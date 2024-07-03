@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import oobd2324_27.uninadelivery.unina_delivery.CustomException.MyException;
+import oobd2324_27.uninadelivery.unina_delivery.DAO.OperatoreDAO;
+import oobd2324_27.uninadelivery.unina_delivery.DAO.PostgresImplementazione.OperatoreDAOImp;
 import oobd2324_27.uninadelivery.unina_delivery.Entity.Cliente;
 import oobd2324_27.uninadelivery.unina_delivery.Entity.Operatore;
 
@@ -24,7 +26,11 @@ public class Main extends Application {
 
         //launch();
         try {
-            Operatore operatore = new Operatore(" ", "rossi", "cirorossi@gmail.com", "ciro1");
+            OperatoreDAO operatoreDAO= new OperatoreDAOImp();
+            //Operatore operatore = operatoreDAO.getByEmail("lala");
+            Operatore operatore=new Operatore("massi","gay","comete","123");
+            operatoreDAO.create(operatore);
+            operatoreDAO.delete(operatore);
             System.out.println(operatore.getNome());
         }catch (Exception eccezione){
           System.out.println(eccezione.getMessage());
