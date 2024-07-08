@@ -59,14 +59,16 @@ public class OperatoreDAOImp implements OperatoreDAO {
 
     @Override
     public void update(Operatore nuovoOperatore, String email) {
-        String sql="UPDATE FROM operatore WHERE email=?";
+        String sql="UPDATE operatore SET nome=?,cognome=? WHERE email=?";
         try{
             Connection connection=Postgres.getConnection();
             try{
-                PreparedStatement preparedStatement= connection.prepareStatement(sql);
-                preparedStatement.setString(1, nuovoOperatore.getEmail());
+               PreparedStatement preparedStatement=connection.prepareStatement(sql);
+               preparedStatement.setString(1,nuovoOperatore.getNome());
+               preparedStatement.setString(2,nuovoOperatore.getCognome());
+               preparedStatement.setString(3,nuovoOperatore.getEmail());
 
-                preparedStatement.executeUpdate();
+               preparedStatement.executeUpdate();
             }catch(SQLException e){
                 e.printStackTrace();
             }
