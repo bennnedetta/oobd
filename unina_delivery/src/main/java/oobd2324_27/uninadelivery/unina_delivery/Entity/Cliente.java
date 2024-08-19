@@ -77,16 +77,20 @@ public class Cliente {
     }
 
     public List<Ordine> getOrdini() {
+
         return ordini;
     }
     public Ordine getOrdini(int index) {
+
         return ordini.get(index);
     }
 
     public void setOrdini(List<Ordine> ordini) {
+
         this.ordini = ordini;
     }
     public void addOrdini(Ordine ordini) {
+
         this.ordini.add(ordini);
     }
 }

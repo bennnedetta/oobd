@@ -62,12 +62,14 @@ public class ClienteDAOImp implements ClienteDAO {
 
     @Override
     public void update(Cliente nuovoCliente, String email) {
-        String sql="UPDATE FROM cliente WHERE email=?";
+        String sql="UPDATE cliente SET nome=?,cognome=? where email=?";
         try{
             Connection connection=Postgres.getConnection();
             try {
                 PreparedStatement preparedStatement= connection.prepareStatement(sql);
-                preparedStatement.setString(1, nuovoCliente.getEmail());
+                preparedStatement.setString(1, nuovoCliente.getNome());
+                preparedStatement.setString(2, nuovoCliente.getCognome());
+                preparedStatement.setString(3, nuovoCliente.getEmail());
 
                 preparedStatement.executeUpdate();
             }catch (SQLException e){
