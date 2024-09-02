@@ -39,6 +39,34 @@ public class MezzoDAOImp implements MezzoDAO {
     }
 
     @Override
+    public Mezzo getByTarga(String targa) {
+        String sql="SELECT * FROM mezzo WHERE targa=?";
+        try{
+            Connection connection= Postgres.getConnection();
+            try{
+                PreparedStatement preparedStatement= connection.prepareStatement(sql);
+                preparedStatement.setString(1,targa);
+
+                ResultSet resultSet=preparedStatement.executeQuery();
+                while (resultSet.next()){
+                    String targaMezzo = resultSet.getString("targa");
+                    Double pesoSupportato = resultSet.getDouble("peso_supportato");
+                    Boolean disponibilita = resultSet.getBoolean("disponibilita");
+                    Mezzo mezzo = new Mezzo(targa,pesoSupportato,disponibilita);
+                }
+            }catch (SQLException | MyException e){
+                e.printStackTrace();
+            }
+            finally{
+                connection.close();
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
     public void update(Mezzo nuovoMezzo, String targa) {
         String sql = "UPDATE mezzo SET disponibile=? WHERE targa=?";
         try {

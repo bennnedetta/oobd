@@ -189,4 +189,33 @@ public class CorriereDAOImp implements CorriereDAO {
         }
         return corrieri;
     }
+
+    @Override
+    public Corriere getByMatricola(String matricola) {
+        String sql="SELECT * FROM corriere WHERE matricola=?";
+        try{
+            Connection connection=Postgres.getConnection();
+            try{
+                PreparedStatement preparedStatement= connection.prepareStatement(sql);
+                preparedStatement.setString(1,matricola);
+
+                ResultSet resultSet=preparedStatement.executeQuery();
+                while(resultSet.next()){
+                    String numeroMatricola=resultSet.getString("idcorriere");
+                    String nome=resultSet.getString("nome");
+                    String cognome=resultSet.getString("cognome");
+                    String recapitoTelefonico=resultSet.getString("numero_telefono");
+                    Boolean disponibile=resultSet.getBoolean("disponibilita");
+                    Corriere corriere=new Corriere(nome,cognome,recapitoTelefonico,disponibile,matricola);
+                }
+            }catch (SQLException | MyException e){
+                e.printStackTrace();
+            }finally{
+                connection.close();
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

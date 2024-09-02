@@ -1,6 +1,7 @@
 package oobd2324_27.uninadelivery.unina_delivery.DAO.PostgresImplementazione;
 
 import oobd2324_27.uninadelivery.unina_delivery.CustomException.MyException;
+import oobd2324_27.uninadelivery.unina_delivery.DAO.ClienteDAO;
 import oobd2324_27.uninadelivery.unina_delivery.DAO.OrdineDAO;
 import oobd2324_27.uninadelivery.unina_delivery.Database.Postgres;
 import oobd2324_27.uninadelivery.unina_delivery.Entity.Cliente;

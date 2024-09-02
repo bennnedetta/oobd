@@ -23,9 +23,9 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+        launch(args);
 
-        //launch();
-        try {
+        /*try {
             OperatoreDAO operatoreDAO= new OperatoreDAOImp();
             //Operatore operatore = operatoreDAO.getByEmail("lala");
             Operatore operatore=new Operatore("massi","gay","comete","123");
@@ -34,6 +34,7 @@ public class Main extends Application {
             System.out.println(operatore.getNome());
         }catch (Exception eccezione){
           System.out.println(eccezione.getMessage());
-        }
+        }*/
     }
 }
+
