@@ -7,4 +7,5 @@ module oobd2324_27.uninadelivery.unina_delivery {
 
     opens oobd2324_27.uninadelivery.unina_delivery to javafx.fxml;
     exports oobd2324_27.uninadelivery.unina_delivery;
+    opens oobd2324_27.uninadelivery.unina_delivery.Controller to javafx.fxml;
 }

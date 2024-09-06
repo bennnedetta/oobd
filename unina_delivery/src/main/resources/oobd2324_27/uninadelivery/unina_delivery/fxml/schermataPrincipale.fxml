@@ -3,85 +3,118 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oobd2324_27.uninadelivery.unina_delivery.Controller.SchermataPrincipale">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@../style/home.css">
          <children>
             <BorderPane layoutX="262.0" layoutY="176.0" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #f5f5dc;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <left>
                   <AnchorPane prefHeight="700.0" prefWidth="180.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane prefHeight="700.0" prefWidth="180.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane layoutY="-2.6666666666666665" prefHeight="523.0" prefWidth="180.0" style="-fx-background-color: #ffffff;" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <ImageView fx:id="logo_image" fitHeight="82.0" fitWidth="98.0" layoutX="41.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../../../../../../../Downloads/delivery%20logo.png" />
-                                 </image>
-                              </ImageView>
-                              <Label fx:id="logo_label" layoutX="44.0" layoutY="79.0" prefHeight="16.0" prefWidth="97.0" text="UninaDelivery" textFill="#f66008">
+                              <Label alignment="CENTER" layoutX="-2.0" layoutY="84.0" prefHeight="30.0" prefWidth="185.0" text="UninaDelivery" textFill="#f66008">
                                  <font>
                                     <Font name="Microsoft Himalaya" size="24.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="home_button" layoutX="23.0" layoutY="145.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" style="-fx-background-color: #ffffff;" text="Home" textFill="#f66008" />
-                              <Button fx:id="ordini_button" layoutX="23.0" layoutY="208.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" style="-fx-background-color: #ffffff;" text="Ordini" textFill="#f66008" />
-                              <Button fx:id="mezzi_button" layoutX="23.0" layoutY="266.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" style="-fx-background-color: #ffffff;" text="Mezzi" textFill="#f66008" />
-                              <Button fx:id="corrieri_button" layoutX="23.0" layoutY="325.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" style="-fx-background-color: #ffffff;" text="Corrieri" textFill="#f66008" />
-                              <Button fx:id="spedizioni_button" layoutX="23.0" layoutY="386.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" style="-fx-background-color: #ffffff;" text="Spedizioni" textFill="#f66008" />
+                              <Button layoutX="6.0" layoutY="145.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="185.0" text="Home" textFill="#f66008" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="150.0">
+                                 <font>
+                                    <Font name="Microsoft Himalaya" size="22.0" />
+                                 </font></Button>
+                              <Button layoutX="23.0" layoutY="216.0" mnemonicParsing="false" onAction="#showOrdini" onMouseClicked="#showOrdini" prefHeight="45.0" prefWidth="191.0" text="Ordini" textFill="#f66008" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="216.0">
+                                 <font>
+                                    <Font name="Microsoft Himalaya" size="22.0" />
+                                 </font></Button>
+                              <Button layoutX="23.0" layoutY="237.0" mnemonicParsing="false" onAction="#showSpedizioni" onMouseClicked="#showSpedizioni" prefHeight="45.0" prefWidth="190.0" text="Spedizioni" textFill="#f66008" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="280.0">
+                                 <font>
+                                    <Font name="Microsoft Himalaya" size="22.0" />
+                                 </font></Button>
+                              <ImageView fitHeight="74.0" fitWidth="120.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/logo.png" />
+                                 </image>
+                              </ImageView>
                            </children>
                         </AnchorPane>
                      </children>
                   </AnchorPane>
                </left>
-               <top>
-                  <AnchorPane prefHeight="30.0" prefWidth="1100.0" style="-fx-background-color: #e5e5c1;" BorderPane.alignment="CENTER" />
-               </top>
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="520.0" prefWidth="920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="520.0" prefWidth="920.0" styleClass="home" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <ScrollPane layoutX="14.0" layoutY="14.0" prefHeight="152.0" prefWidth="890.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="16.0">
-                                 <content>
-                                    <AnchorPane prefHeight="149.0" prefWidth="890.0">
-                                       <children>
-                                          <AnchorPane layoutX="14.0" layoutY="16.0" prefHeight="107.0" prefWidth="189.0" style="-fx-background-color: #f66008; -fx-background-radius: 10;">
-                                             <children>
-                                                <ImageView fitHeight="35.0" fitWidth="31.0" layoutX="14.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true" />
-                                             </children>
-                                          </AnchorPane>
-                                          <AnchorPane layoutX="222.0" layoutY="16.0" prefHeight="107.0" prefWidth="189.0" style="-fx-background-color: #f66008; -fx-background-radius: 10;" />
-                                          <AnchorPane layoutX="428.0" layoutY="16.0" prefHeight="107.0" prefWidth="189.0" style="-fx-background-color: #f66008; -fx-background-radius: 10;" />
-                                          <AnchorPane layoutX="634.0" layoutY="16.0" prefHeight="107.0" prefWidth="189.0" style="-fx-background-color: #f66008; -fx-background-radius: 10;" />
-                                          <AnchorPane layoutX="841.0" layoutY="16.0" prefHeight="107.0" prefWidth="189.0" style="-fx-background-color: #f66008; -fx-background-radius: 10;" />
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </ScrollPane>
                               <AnchorPane layoutX="14.0" layoutY="183.0" prefHeight="329.0" prefWidth="419.0" style="-fx-background-color: #ffffff;">
                                  <children>
-                                    <LineChart layoutX="-95.0" layoutY="-51.0" prefHeight="349.3333333333333" prefWidth="419.3333333333333" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <LineChart fx:id="graficoSpedizioni" alternativeRowFillVisible="false" layoutX="-95.0" layoutY="-51.0" legendVisible="false" prefHeight="349.3333333333333" prefWidth="419.3333333333333" style="-fx-background-color: #da085a;" stylesheets="@../style/lineChart.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <xAxis>
-                                        <CategoryAxis side="BOTTOM" />
+                                        <CategoryAxis gapStartAndEnd="false" side="BOTTOM" fx:id="xAxis" />
                                       </xAxis>
                                       <yAxis>
-                                        <NumberAxis side="LEFT" />
+                                        <NumberAxis fx:id="yAxis" side="LEFT" tickLabelFill="WHITE" />
                                       </yAxis>
                                     </LineChart>
+                                    <Text fill="WHITE" layoutX="147.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Report delle spedizioni">
+                                       <font>
+                                          <Font name="Microsoft Himalaya" size="20.0" />
+                                       </font>
+                                    </Text>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="460.0" layoutY="183.0" prefHeight="127.0" prefWidth="445.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" AnchorPane.leftAnchor="460.0" AnchorPane.rightAnchor="14.666666666666686" AnchorPane.topAnchor="182.66666666666669" />
-                              <AnchorPane layoutX="460.0" layoutY="361.0" prefHeight="127.0" prefWidth="445.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" AnchorPane.leftAnchor="460.0" AnchorPane.rightAnchor="14.666666666666742" />
+                              <DatePicker fx:id="dataInizio" layoutX="14.0" layoutY="48.0" />
+                              <DatePicker fx:id="dataFine" layoutX="258.0" layoutY="48.0" />
+                              <AnchorPane layoutX="493.0" layoutY="184.0" prefHeight="327.0" prefWidth="380.0">
+                                 <children>
+                                    <PieChart fx:id="graficoCorrieri" labelLineLength="30.0" layoutX="50.0" layoutY="33.333333333333336" legendSide="RIGHT" prefHeight="327.3333333333333" prefWidth="330.0" stylesheets="@../style/pieChart.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                              <Label fx:id="ordiniSpeditiLabel" layoutX="522.0" layoutY="41.0" text="Ordini in media spediti questo mese:" textFill="WHITE">
+                                 <font>
+                                    <Font name="Microsoft Himalaya" size="24.0" />
+                                 </font></Label>
+                              <Label fx:id="ordineMenoProdottiLabel" layoutX="522.0" layoutY="73.0" text="Ordine con meno prodotti:" textFill="WHITE">
+                                 <font>
+                                    <Font name="Microsoft Himalaya" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="prodottiNellOrdineLabel" layoutX="522.0" layoutY="104.0" text="Prodotti presenti all'interno: " textFill="WHITE">
+                                 <font>
+                                    <Font name="Microsoft Himalaya" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="valoreOrdiniSpediti" layoutX="766.0" layoutY="41.0" text="x" textFill="WHITE">
+                                 <font>
+                                    <Font name="Microsoft Himalaya" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="valoreOrdineMenoProdotti" layoutX="698.0" layoutY="73.0" text="x" textFill="WHITE">
+                                 <font>
+                                    <Font name="Microsoft Himalaya" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="valoreProdottiNellOrdine" layoutX="706.0" layoutY="104.0" text="x" textFill="WHITE">
+                                 <font>
+                                    <Font name="Microsoft Himalaya" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="17.0" layoutY="135.0" mnemonicParsing="false" onAction="#generateReport" prefHeight="27.0" prefWidth="416.0" style="-fx-background-color: #ffffff;" text="OK" textFill="#f66008">
+                                 <font>
+                                    <Font name="Microsoft Himalaya" size="14.0" />
+                                 </font>
+                              </Button>
                            </children>
                         </AnchorPane>
                      </children>

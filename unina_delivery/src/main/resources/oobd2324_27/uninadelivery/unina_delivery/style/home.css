@@ -1,0 +1,38 @@
+.sidebar{
+    -fx-background-color: #fff;
+    -fx-font-family: "Microsoft Himalaya";
+}
+
+.sidebar Label{
+    -fx-text-fill:  #da085a;
+    -fx-font-size: 28px;
+    -fx-text-alignment: center;
+}
+
+.sidebar Button{
+    -fx-background-color: #fff;
+    -fx-text-fill:  #da085a;
+    -fx-font-size: 24px;
+    -fx-text-alignment: center;
+}
+
+
+.sidebar Button:hover{
+    -fx-text-fill:  #fff;
+    -fx-background-color: #da085a;
+    -fx-font-size: 24px;
+    -fx-text-alignment: center;
+    -fx-background-radius: 30 0 0 30;
+}
+
+.home{
+    -fx-background-color: #da085a;
+    -fx-text-fill:  #fff;
+    -fx-font-size: 15px;
+}
+
+.home Label{
+    -fx-text-fill: #fff;
+    -fx-font-family: "Microsoft Himalaya";
+    -fx-font-size: 22px;
+}

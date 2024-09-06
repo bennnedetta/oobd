@@ -1,0 +1,35 @@
+
+.default-color0.chart-series-line {
+    -fx-stroke: #FFBE0B;
+}
+.default-color1.chart-series-line {
+    -fx-stroke: #FB5607;
+}
+.default-color2.chart-series-line {
+    -fx-stroke: #FF006E;
+}
+.default-color3.chart-series-line {
+    -fx-stroke: #8338EC;
+}
+.default-color4.chart-series-line {
+    -fx-stroke: #3A86FF;
+}
+.default-color0.chart-line-symbol {
+    -fx-background-color: #FFBE0B,#FFFFFF;
+}
+.default-color1.chart-line-symbol {
+    -fx-background-color: #FB5607,#FFFFFF;
+}
+.default-color2.chart-line-symbol {
+    -fx-background-color: #FF006E,#FFFFFF;
+}
+.default-color3.chart-line-symbol {
+    -fx-background-color: #8338EC,#FFFFFF;
+}
+.default-color4.chart-line-symbol {
+    -fx-background-color: #3A86FF,#FFFFFF;
+}
+.chart-axis.tick-label{
+    -fx-text-fill: #ffffff;
+}
+
