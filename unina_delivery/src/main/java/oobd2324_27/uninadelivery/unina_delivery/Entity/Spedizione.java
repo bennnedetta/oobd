@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Spedizione {
+    private String numeroSpedizione;
     private LocalDate dataSpedizione;
     private double pesoTotale;
     private LocalDate dataConsegna;
@@ -16,7 +17,8 @@ public class Spedizione {
     private Corriere corriere;
     private List<Ordine> ordini= new ArrayList<>();
 
-    public Spedizione(LocalDate dataSpedizione, double pesoTotale, LocalDate dataConsegna, String statoSpedizione, Operatore operatore, Mezzo mezzo, Corriere corriere, List<Ordine> ordini) throws MyException {
+    public Spedizione(String numeroSpedizione,LocalDate dataSpedizione, double pesoTotale, LocalDate dataConsegna, String statoSpedizione, Operatore operatore, Mezzo mezzo, Corriere corriere, List<Ordine> ordini) throws MyException {
+        setNumeroSpedizione(numeroSpedizione);
         setDataSpedizione(dataSpedizione);
         setPesoTotale(pesoTotale);
         setDataConsegna(dataConsegna);
@@ -44,6 +46,14 @@ public class Spedizione {
             throw new MyException("il peso di una spedizione non può essere negativo");
         }
         this.pesoTotale = pesoTotale;
+    }
+
+    public String getNumeroSpedizione() {
+        return numeroSpedizione;
+    }
+
+    public void setNumeroSpedizione(String numeroSpedizione) {
+        this.numeroSpedizione = numeroSpedizione;
     }
 
     public LocalDate getDataConsegna() {

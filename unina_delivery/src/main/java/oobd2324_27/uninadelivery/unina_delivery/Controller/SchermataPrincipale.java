@@ -12,21 +12,29 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import oobd2324_27.uninadelivery.unina_delivery.Database.Postgres;
 
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import static oobd2324_27.uninadelivery.unina_delivery.Database.Postgres.getConnection;
+
 public class SchermataPrincipale implements Initializable {
     @FXML
-    private DatePicker dataFine;
+    private DatePicker dataFine = new DatePicker();
 
     @FXML
-    private DatePicker dataInizio;
+    private DatePicker dataInizio = new DatePicker();
 
     @FXML
     private PieChart graficoCorrieri;
+    //controlla
+    private Connection connection;
+
 
     @FXML
     private LineChart<String, Integer> graficoSpedizioni;
@@ -56,24 +64,26 @@ public class SchermataPrincipale implements Initializable {
 
     @FXML
     private Label valoreProdottiNellOrdine;
+    @FXML
+    private Connection connexion;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         dataInizio.setValue(LocalDate.now());
         dataFine.setValue(LocalDate.now());
-        ordiniSpeditiLabel.setVisible(false);
-        ordineMenoProdottiLabel.setVisible(false);
-        prodottiNellOrdineLabel.setVisible(false);
-        valoreOrdiniSpediti.setVisible(false);
-        valoreOrdineMenoProdotti.setVisible(false);
-        valoreProdottiNellOrdine.setVisible(false);
+        //ordiniSpeditiLabel.setVisible(false);
+        //ordineMenoProdottiLabel.setVisible(false);
+        //prodottiNellOrdineLabel.setVisible(false);
+        //valoreOrdiniSpediti.setVisible(false);
+        //valoreOrdineMenoProdotti.setVisible(false);
+        //valoreProdottiNellOrdine.setVisible(false);
 
-        xAxis.setTickLabelFill(Color.WHITE);
-
-
-
+        //xAxis.setTickLabelFill(Color.WHITE);
+        
     }
+
+
 
     @FXML
     void generateReport(ActionEvent event) {
@@ -99,6 +109,17 @@ public class SchermataPrincipale implements Initializable {
             );
 
     graficoCorrieri.setData(pieChartData);
+
+   /* String query="SELECT * FROM spedizioni WHERE data_consegna BETWEEN ? AND ?";
+    XYChart.Series<String, Integer> series = new XYChart.Series<>();
+    try{
+        getConnection();
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    */
+
 
     //valorizzazione del grafico con le linee
     xAxis.setTickLabelRotation(45);
@@ -127,7 +148,6 @@ public class SchermataPrincipale implements Initializable {
     series3.getData().add(new XYChart.Data("agosto",40));
 
     graficoSpedizioni.getData().add(series3);
-
 
     }
 

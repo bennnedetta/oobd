@@ -25,20 +25,23 @@
                      <children>
                         <AnchorPane layoutY="-2.6666666666666665" prefHeight="523.0" prefWidth="180.0" style="-fx-background-color: #ffffff;" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Label alignment="CENTER" layoutX="-2.0" layoutY="84.0" prefHeight="30.0" prefWidth="185.0" text="UninaDelivery" textFill="#f66008">
+                              <Label alignment="CENTER" layoutX="-2.0" layoutY="84.0" prefHeight="30.0" prefWidth="185.0" text="UninaDelivery" textFill="#da085a">
                                  <font>
                                     <Font name="Microsoft Himalaya" size="24.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="6.0" layoutY="145.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="185.0" text="Home" textFill="#f66008" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="150.0">
+                              <Button layoutX="6.0" layoutY="145.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="185.0" text="Home" textFill="#da085a"
+                                      AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="150.0">
                                  <font>
                                     <Font name="Microsoft Himalaya" size="22.0" />
                                  </font></Button>
-                              <Button layoutX="23.0" layoutY="216.0" mnemonicParsing="false" onAction="#showOrdini" onMouseClicked="#showOrdini" prefHeight="45.0" prefWidth="191.0" text="Ordini" textFill="#f66008" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="216.0">
+                              <Button layoutX="23.0" layoutY="216.0" mnemonicParsing="false" onAction="#showOrdini" onMouseClicked="#showOrdini" prefHeight="45.0" prefWidth="191.0" text="Ordini" textFill="#da085a"
+                                      AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="216.0">
                                  <font>
                                     <Font name="Microsoft Himalaya" size="22.0" />
                                  </font></Button>
-                              <Button layoutX="23.0" layoutY="237.0" mnemonicParsing="false" onAction="#showSpedizioni" onMouseClicked="#showSpedizioni" prefHeight="45.0" prefWidth="190.0" text="Spedizioni" textFill="#f66008" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="280.0">
+                              <Button layoutX="23.0" layoutY="237.0" mnemonicParsing="false" onAction="#showSpedizioni" onMouseClicked="#showSpedizioni" prefHeight="45.0" prefWidth="190.0" text="Spedizioni" textFill="#da085a"
+                                      AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="280.0">
                                  <font>
                                     <Font name="Microsoft Himalaya" size="22.0" />
                                  </font></Button>
@@ -110,7 +113,7 @@
                                     <Font name="Microsoft Himalaya" size="24.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="17.0" layoutY="135.0" mnemonicParsing="false" onAction="#generateReport" prefHeight="27.0" prefWidth="416.0" style="-fx-background-color: #ffffff;" text="OK" textFill="#f66008">
+                              <Button layoutX="23.0" layoutY="118.0" mnemonicParsing="false" onAction="#generateReport" prefHeight="36.0" prefWidth="452.0" stylesheets="@../style/button.css" text="OK" textFill="#da085a">
                                  <font>
                                     <Font name="Microsoft Himalaya" size="14.0" />
                                  </font>

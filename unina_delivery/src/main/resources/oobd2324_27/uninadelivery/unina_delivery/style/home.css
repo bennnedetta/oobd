@@ -26,6 +26,7 @@
 }
 
 .home{
+    -fx-background-image: url(oobd2324_27/uninadelivery/unina_delivery/images/sfondoProgetto.jpg);
     -fx-background-color: #da085a;
     -fx-text-fill:  #fff;
     -fx-font-size: 15px;

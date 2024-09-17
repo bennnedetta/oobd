@@ -114,6 +114,7 @@ public class SpedizioneDAOImp implements SpedizioneDAO {
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
+                    String numeroSpedizione=resultSet.getString("idspedizione");
                     double pesoTotale = resultSet.getDouble("peso_totale");
                     LocalDate dataConsegna = resultSet.getObject("data_consegna", LocalDate.class);
                     String statoSpedizione = resultSet.getString("stato_spedizione");
@@ -133,7 +134,7 @@ public class SpedizioneDAOImp implements SpedizioneDAO {
 
                     List<Ordine> ordini = new ArrayList<>(); // Implementa la logica per recuperare gli ordini
 
-                    spedizione = new Spedizione(dataSpedizione, pesoTotale, dataConsegna, statoSpedizione, operatore, mezzo, corriere, ordini);
+                    spedizione = new Spedizione(numeroSpedizione,dataSpedizione, pesoTotale, dataConsegna, statoSpedizione, operatore, mezzo, corriere, ordini);
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -162,6 +163,7 @@ public class SpedizioneDAOImp implements SpedizioneDAO {
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
+                    String numeroSpedizione=resultSet.getString("idspedizione");
                     LocalDate dataSpedizione = resultSet.getObject("data_spedizione", LocalDate.class);
                     double pesoTotale = resultSet.getDouble("peso_totale");
                     LocalDate dataConsegna = resultSet.getObject("data_consegna", LocalDate.class);
@@ -182,7 +184,7 @@ public class SpedizioneDAOImp implements SpedizioneDAO {
 
                     List<Ordine> ordini = new ArrayList<>(); // Implementa la logica per recuperare gli ordini
 
-                    Spedizione spedizione = new Spedizione(dataSpedizione, pesoTotale, dataConsegna, statoSpedizione, operatore, mezzo, corriere, ordini);
+                    Spedizione spedizione = new Spedizione(numeroSpedizione,dataSpedizione, pesoTotale, dataConsegna, statoSpedizione, operatore, mezzo, corriere, ordini);
                     spedizioni.add(spedizione);
                 }
             } catch (SQLException e) {
