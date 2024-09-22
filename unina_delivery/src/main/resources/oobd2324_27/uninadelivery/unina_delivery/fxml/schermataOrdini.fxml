@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oobd2324_27.uninadelivery.unina_delivery.Controller.SchermataPrincipale">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oobd2324_27.uninadelivery.unina_delivery.Controller.SchermataOrdini">
     <children>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@../style/home.css">
             <children>
@@ -27,15 +28,15 @@
                                                 <Font name="Microsoft Himalaya" size="24.0" />
                                             </font>
                                         </Label>
-                                        <Button layoutX="6.0" layoutY="145.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="185.0" text="Home" textFill="#da085a" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="150.0">
+                                        <Button layoutX="6.0" layoutY="145.0" mnemonicParsing="false" onAction="#showHome" prefHeight="47.0" prefWidth="185.0" text="Home" textFill="#da085a" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="150.0">
                                             <font>
                                                 <Font name="Microsoft Himalaya" size="22.0" />
                                             </font></Button>
-                                        <Button layoutX="23.0" layoutY="216.0" mnemonicParsing="false" onAction="#showOrdini" onMouseClicked="#showOrdini" prefHeight="45.0" prefWidth="191.0" text="Ordini" textFill="#da085a" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="216.0">
+                                        <Button layoutX="23.0" layoutY="216.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="191.0" text="Ordini" textFill="#da085a" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="216.0">
                                             <font>
                                                 <Font name="Microsoft Himalaya" size="22.0" />
                                             </font></Button>
-                                        <Button layoutX="23.0" layoutY="237.0" mnemonicParsing="false" onAction="#showSpedizioni" onMouseClicked="#showSpedizioni" prefHeight="45.0" prefWidth="190.0" text="Spedizioni" textFill="#da085a" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="280.0">
+                                        <Button layoutX="23.0" layoutY="237.0" mnemonicParsing="false" onAction="#showSpedizioni" prefHeight="45.0" prefWidth="190.0" text="Spedizioni" textFill="#da085a" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="280.0">
                                             <font>
                                                 <Font name="Microsoft Himalaya" size="22.0" />
                                             </font></Button>
@@ -56,23 +57,25 @@
                            <children>
                               <AnchorPane layoutX="175.0" layoutY="166.0" prefHeight="550.0" prefWidth="916.6666666666666" styleClass="home" stylesheets="@../style/home.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <TableView layoutX="40.0" layoutY="69.0" prefHeight="550.0" prefWidth="916.6666666666666" styleClass="tableview" stylesheets="@../style/tableview.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="150.0">
+                                    <TableView fx:id="tabellaOrdini" layoutX="40.0" layoutY="69.0" prefHeight="550.0" prefWidth="916.6666666666666" styleClass="tableview" stylesheets="@../style/tableview.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="150.0">
                                       <columns>
-                                        <TableColumn prefWidth="136.0" text="Numero Ordine" />
-                                        <TableColumn prefWidth="136.0" text="Data" />
-                                          <TableColumn prefWidth="136.0" text="Costo Totale" />
-                                          <TableColumn prefWidth="136.0" text="Peso Totale" />
-                                          <TableColumn prefWidth="136.0" text="Email Cliente" />
-                                          <TableColumn prefWidth="136.0" text="Numero Spdizione" />
+                                        <TableColumn fx:id="numeroOrdineCol" prefWidth="136.0" text="Numero Ordine" />
+                                        <TableColumn fx:id="dataCol" prefWidth="136.0" text="Data" />
+                                          <TableColumn fx:id="costoTotaleCol" prefWidth="136.0" text="Costo Totale" />
+                                          <TableColumn fx:id="pesoTotaleCol" prefWidth="136.0" text="Peso Totale" />
+                                          <TableColumn fx:id="emailClienteCol" prefWidth="136.0" text="Email Cliente" />
+                                          <TableColumn fx:id="numeroSpedzioneCol" prefWidth="136.0" text="Numero Spedizione" />
                                       </columns>
                                     </TableView>
-                                    <DatePicker layoutX="50.0" layoutY="36.0" />
-                                    <DatePicker layoutX="323.0" layoutY="36.0" />
-                                    <Button layoutX="50.0" layoutY="93.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="94.0" stylesheets="@../style/button.css" text="OK">
+                                    <DatePicker fx:id="dataInizio" layoutX="50.0" layoutY="36.0" />
+                                    <DatePicker fx:id="dataFine" layoutX="323.0" layoutY="36.0" />
+                                    <Button fx:id="okButton" layoutX="50.0" layoutY="93.0" mnemonicParsing="false" onAction="#caricaNuovaTabella" prefHeight="36.0" prefWidth="94.0" stylesheets="@../style/button.css" text="OK">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Button>
+                                    <TextField fx:id="filtroUtente" layoutX="693.0" layoutY="36.0" prefHeight="32.0" prefWidth="174.0" />
+                                    <Label fx:id="filtroUtenteLabel" layoutX="584.0" layoutY="38.0" text="Filtra per utente:" />
                                  </children>
                               </AnchorPane>
                            </children></AnchorPane>

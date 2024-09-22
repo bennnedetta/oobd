@@ -22,4 +22,6 @@ public interface SpedizioneDAO {
 
     // Metodo per ottenere una lista di tutte le spedizioni dal database
     List<Spedizione> getAllSpedizioni() throws MyException;
+
+    Spedizione getById(int numeroSpedizione) throws MyException;
 }

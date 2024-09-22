@@ -25,7 +25,7 @@ public class CorriereDAOImp implements CorriereDAO {
                 preparedStatement.setString(2, corriere.getCognome());
                 preparedStatement.setString(3, corriere.getRecapitoTelefonico());
                 preparedStatement.setBoolean(4, corriere.isDisponibile());
-                preparedStatement.setString(5, corriere.getMatricola());
+                preparedStatement.setInt(5, corriere.getIdcorriere());
 
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {
@@ -73,7 +73,7 @@ public class CorriereDAOImp implements CorriereDAO {
                 preparedStatement.setString(2, corriere.getCognome());
                 preparedStatement.setString(3, corriere.getRecapitoTelefonico());
                 preparedStatement.setBoolean(4, corriere.isDisponibile());
-                preparedStatement.setString(5, corriere.getMatricola());
+                preparedStatement.setInt(5, corriere.getIdcorriere());
 
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {
@@ -104,7 +104,7 @@ public class CorriereDAOImp implements CorriereDAO {
                     String cognome = resultSet.getString("cognome");
                     String recapitoTelefonico = resultSet.getString("recapitoTelefonico");
                     boolean disponibile = resultSet.getBoolean("disponibile");
-                    String matricolaResult = resultSet.getString("matricola");
+                    int matricolaResult = resultSet.getInt("idcorriere");
 
                     corriere = new Corriere(nome, cognome, recapitoTelefonico, disponibile, matricolaResult);
                 }
@@ -139,7 +139,7 @@ public class CorriereDAOImp implements CorriereDAO {
                     String cognome = resultSet.getString("cognome");
                     String recapitoTelefonico = resultSet.getString("recapitoTelefonico");
                     boolean disponibile = resultSet.getBoolean("disponibile");
-                    String matricola = resultSet.getString("matricola");
+                    int matricola = resultSet.getInt("idcorriere");
 
                     Corriere corriere = new Corriere(nome, cognome, recapitoTelefonico, disponibile, matricola);
                     corrieri.add(corriere);
@@ -172,7 +172,7 @@ public class CorriereDAOImp implements CorriereDAO {
                     String cognome = resultSet.getString("cognome");
                     String recapitoTelefonico = resultSet.getString("recapitoTelefonico");
                     boolean disponibile = resultSet.getBoolean("disponibile");
-                    String matricola = resultSet.getString("matricola");
+                    int matricola = resultSet.getInt("idcorriere");
 
                     Corriere corriere = new Corriere(nome, cognome, recapitoTelefonico, disponibile, matricola);
                     corrieri.add(corriere);
@@ -191,22 +191,22 @@ public class CorriereDAOImp implements CorriereDAO {
     }
 
     @Override
-    public Corriere getByMatricola(String matricola) {
-        String sql="SELECT * FROM corriere WHERE matricola=?";
+    public Corriere getById(int idcorriere) {
+        String sql="SELECT * FROM corriere WHERE idcorriere=?";
         try{
             Connection connection=Postgres.getConnection();
             try{
                 PreparedStatement preparedStatement= connection.prepareStatement(sql);
-                preparedStatement.setString(1,matricola);
+                preparedStatement.setInt(1,idcorriere);
 
                 ResultSet resultSet=preparedStatement.executeQuery();
-                while(resultSet.next()){
-                    String numeroMatricola=resultSet.getString("idcorriere");
+                if (resultSet.next()){
+
                     String nome=resultSet.getString("nome");
                     String cognome=resultSet.getString("cognome");
                     String recapitoTelefonico=resultSet.getString("numero_telefono");
                     Boolean disponibile=resultSet.getBoolean("disponibilita");
-                    Corriere corriere=new Corriere(nome,cognome,recapitoTelefonico,disponibile,matricola);
+                    return new Corriere(nome,cognome,recapitoTelefonico,disponibile,idcorriere);
                 }
             }catch (SQLException | MyException e){
                 e.printStackTrace();

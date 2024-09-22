@@ -1,6 +1,6 @@
 .button{
     -fx-background-color: #ffffff;
-    -fx-text-fill: #da085a;
+    -fx-text-fill: #FF92C2;
     -fx-background-radius: 30 30 30 30;
     -fx-font-family: "Microsoft Himalaya";
     -fx-font-size: 18px;
@@ -9,7 +9,7 @@
 
 
 .button:hover{
-    -fx-background-color: #FF92C2;
+    -fx-background-color: #da085a;
     -fx-text-fill: #ffffff;
     -fx-cursor: hand;
     -fx-background-radius: 30 30 30 30;

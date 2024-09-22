@@ -10,16 +10,17 @@ public class Corriere {
     private String cognome;
     private String recapitoTelefonico;
     private boolean disponibile;
-    private String matricola;
+    private int idcorriere;
     private List<Spedizione> spedizioni=new ArrayList<>();
 
 
-    public Corriere(String nome, String cognome, String recapitoTelefonico, boolean disponibile, String matricola ) throws MyException {
+    public Corriere(String nome, String cognome, String recapitoTelefonico, boolean disponibile, int idcorriere ) throws MyException {
         setNome(nome);
         setCognome(cognome);
         setRecapitoTelefonico(recapitoTelefonico);
         setDisponibile(disponibile);
-        setMatricola(matricola);
+        setIdcorriere(idcorriere);
+
     }
 
     public String getNome() {
@@ -63,15 +64,12 @@ public class Corriere {
         this.disponibile = disponibile;
     }
 
-    public String getMatricola() {
-        return matricola;
+    public int getIdcorriere() {
+        return idcorriere;
     }
 
-    public void setMatricola(String matricola) throws MyException {
-        if(matricola==null || matricola.trim().isEmpty()){
-            throw new MyException("il campo matricola dev'essere valorizzato");
-        }
-        this.matricola = matricola;
+    public void setIdcorriere(int idcorriere) throws MyException {
+        this.idcorriere = idcorriere;
     }
 
     public List<Spedizione> getSpedizioni() {

@@ -1,6 +1,8 @@
 package oobd2324_27.uninadelivery.unina_delivery.DAO;
 
+import javafx.scene.control.DatePicker;
 import oobd2324_27.uninadelivery.unina_delivery.CustomException.MyException;
+import oobd2324_27.uninadelivery.unina_delivery.Entity.Cliente;
 import oobd2324_27.uninadelivery.unina_delivery.Entity.Ordine;
 
 import java.time.LocalDate;
@@ -22,4 +24,8 @@ public interface OrdineDAO {
 
     // Metodo per ottenere una lista di tutti gli ordini nel database
     List<Ordine> getAllOrdini() throws MyException;
+
+    List<Ordine> getByData(LocalDate dataInizio, LocalDate dataFine) throws MyException;
+
+    List<Ordine> getByCliente(LocalDate dataInizio, LocalDate dataFine,String clienteEmail) throws MyException;
 }

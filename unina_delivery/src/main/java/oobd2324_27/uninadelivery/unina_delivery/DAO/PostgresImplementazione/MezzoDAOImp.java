@@ -48,11 +48,10 @@ public class MezzoDAOImp implements MezzoDAO {
                 preparedStatement.setString(1,targa);
 
                 ResultSet resultSet=preparedStatement.executeQuery();
-                while (resultSet.next()){
-                    String targaMezzo = resultSet.getString("targa");
+                if (resultSet.next()){
                     Double pesoSupportato = resultSet.getDouble("peso_supportato");
                     Boolean disponibilita = resultSet.getBoolean("disponibilita");
-                    Mezzo mezzo = new Mezzo(targa,pesoSupportato,disponibilita);
+                    return new Mezzo(targa,pesoSupportato,disponibilita);
                 }
             }catch (SQLException | MyException e){
                 e.printStackTrace();

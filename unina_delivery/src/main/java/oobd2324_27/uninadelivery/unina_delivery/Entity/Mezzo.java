@@ -61,4 +61,5 @@ public class Mezzo {
     public void addSpedizioni(Spedizione spedizioni) {
         this.spedizioni.add(spedizioni);
     }
+
 }

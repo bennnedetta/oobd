@@ -28,15 +28,15 @@
                                             <Font name="Microsoft Himalaya" size="24.0" />
                                         </font>
                                     </Label>
-                                    <Button layoutX="6.0" layoutY="145.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="185.0" text="Home" textFill="#f66008" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="150.0">
+                                    <Button layoutX="6.0" layoutY="145.0" mnemonicParsing="false" onAction="#showHome" prefHeight="47.0" prefWidth="185.0" text="Home" textFill="#f66008" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="150.0">
                                         <font>
                                             <Font name="Microsoft Himalaya" size="22.0" />
                                         </font></Button>
-                                    <Button layoutX="23.0" layoutY="216.0" mnemonicParsing="false" onAction="#showOrdini" onMouseClicked="#showOrdini" prefHeight="45.0" prefWidth="191.0" text="Ordini" textFill="#f66008" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="216.0">
+                                    <Button layoutX="23.0" layoutY="216.0" mnemonicParsing="false" onAction="#showOrdini" prefHeight="45.0" prefWidth="191.0" text="Ordini" textFill="#f66008" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="216.0">
                                         <font>
                                             <Font name="Microsoft Himalaya" size="22.0" />
                                         </font></Button>
-                                    <Button layoutX="23.0" layoutY="237.0" mnemonicParsing="false" onAction="#showSpedizioni" onMouseClicked="#showSpedizioni" prefHeight="45.0" prefWidth="190.0" text="Spedizioni" textFill="#f66008" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="280.0">
+                                    <Button layoutX="23.0" layoutY="237.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="190.0" text="Spedizioni" textFill="#f66008" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="280.0">
                                         <font>
                                             <Font name="Microsoft Himalaya" size="22.0" />
                                         </font></Button>
@@ -66,7 +66,6 @@
                                           <TableColumn fx:id="pesoTotaleCol" prefWidth="117.14" text="Peso Totale" />
                                           <TableColumn fx:id="targaMezzoCol" prefWidth="117.14" text="Targa Mezzo" />
                                           <TableColumn fx:id="corriereCol" prefWidth="117.14" text="Corriere" />
-                                          <TableColumn prefWidth="75.0" text="Column X" />
                                       </columns>
                                     </TableView>
                                  </center>
@@ -80,6 +79,7 @@
                                  </font>
                               </Button>
                               <Button fx:id="ricaricaTabellaButton" layoutX="802.0" layoutY="482.0" mnemonicParsing="false" onAction="#mostraNuovaTabella" stylesheets="@../style/button.css" text="Ricarica" />
+                              <AnchorPane layoutX="-67.0" layoutY="220.0" prefHeight="200.0" prefWidth="200.0" />
                            </children>
                            <stylesheets>
                               <URL value="@../style/tableview.css" />

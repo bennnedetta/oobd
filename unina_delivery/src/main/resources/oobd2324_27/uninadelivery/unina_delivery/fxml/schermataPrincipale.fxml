@@ -30,18 +30,15 @@
                                     <Font name="Microsoft Himalaya" size="24.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="6.0" layoutY="145.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="185.0" text="Home" textFill="#da085a"
-                                      AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="150.0">
+                              <Button layoutX="6.0" layoutY="145.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="185.0" text="Home" textFill="#b5044b" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="150.0">
                                  <font>
                                     <Font name="Microsoft Himalaya" size="22.0" />
                                  </font></Button>
-                              <Button layoutX="23.0" layoutY="216.0" mnemonicParsing="false" onAction="#showOrdini" onMouseClicked="#showOrdini" prefHeight="45.0" prefWidth="191.0" text="Ordini" textFill="#da085a"
-                                      AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="216.0">
+                              <Button layoutX="23.0" layoutY="216.0" mnemonicParsing="false" onAction="#showOrdini" onMouseClicked="#showOrdini" prefHeight="45.0" prefWidth="191.0" text="Ordini" textFill="#da085a" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="216.0">
                                  <font>
                                     <Font name="Microsoft Himalaya" size="22.0" />
                                  </font></Button>
-                              <Button layoutX="23.0" layoutY="237.0" mnemonicParsing="false" onAction="#showSpedizioni" onMouseClicked="#showSpedizioni" prefHeight="45.0" prefWidth="190.0" text="Spedizioni" textFill="#da085a"
-                                      AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="280.0">
+                              <Button layoutX="23.0" layoutY="237.0" mnemonicParsing="false" onAction="#showSpedizioni" onMouseClicked="#showSpedizioni" prefHeight="45.0" prefWidth="190.0" text="Spedizioni" textFill="#da085a" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="280.0">
                                  <font>
                                     <Font name="Microsoft Himalaya" size="22.0" />
                                  </font></Button>
@@ -62,7 +59,7 @@
                            <children>
                               <AnchorPane layoutX="14.0" layoutY="183.0" prefHeight="329.0" prefWidth="419.0" style="-fx-background-color: #ffffff;">
                                  <children>
-                                    <LineChart fx:id="graficoSpedizioni" alternativeRowFillVisible="false" layoutX="-95.0" layoutY="-51.0" legendVisible="false" prefHeight="349.3333333333333" prefWidth="419.3333333333333" style="-fx-background-color: #da085a;" stylesheets="@../style/lineChart.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <LineChart fx:id="graficoSpedizioni" alternativeRowFillVisible="false" layoutX="-95.0" layoutY="-51.0" legendVisible="false" prefHeight="349.3333333333333" prefWidth="419.3333333333333" style="-fx-background-color: #FF92C2;" stylesheets="@../style/lineChart.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <xAxis>
                                         <CategoryAxis gapStartAndEnd="false" side="BOTTOM" fx:id="xAxis" />
                                       </xAxis>
@@ -70,7 +67,7 @@
                                         <NumberAxis fx:id="yAxis" side="LEFT" tickLabelFill="WHITE" />
                                       </yAxis>
                                     </LineChart>
-                                    <Text fill="WHITE" layoutX="147.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Report delle spedizioni">
+                                    <Text fill="#b5044b" layoutX="147.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Report delle spedizioni">
                                        <font>
                                           <Font name="Microsoft Himalaya" size="20.0" />
                                        </font>

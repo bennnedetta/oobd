@@ -12,5 +12,5 @@ public interface CorriereDAO {
     void deleteCorriere(String matricola) throws MyException; //Rimuove il corriere con la matricola specificata.
     List<Corriere> getAllCorrieri() throws MyException; //Restituisce una lista di tutti i corrieri.
     List<Corriere> getAvailableCorrieri() throws MyException; //Restituisce una lista di tutti i corrieri disponibili.
-    Corriere getByMatricola(String matricola);
+    Corriere getById(int idcorriere);
 }

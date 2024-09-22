@@ -36,7 +36,7 @@ public class SpedizioneDAOImp implements SpedizioneDAO {
                 preparedStatement.setString(4, spedizione.getStatoSpedizione());
                 preparedStatement.setString(5, spedizione.getOperatore().getEmail());
                 preparedStatement.setString(6, spedizione.getMezzo().getTarga());
-                preparedStatement.setString(7, spedizione.getCorriere().getMatricola());
+                preparedStatement.setInt(7, spedizione.getCorriere().getIdcorriere());
 
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {
@@ -86,7 +86,7 @@ public class SpedizioneDAOImp implements SpedizioneDAO {
                 preparedStatement.setString(3, spedizione.getStatoSpedizione());
                 preparedStatement.setString(4, spedizione.getOperatore().getEmail());
                 preparedStatement.setString(5, spedizione.getMezzo().getTarga());
-                preparedStatement.setString(6, spedizione.getCorriere().getMatricola());
+                preparedStatement.setInt(6, spedizione.getCorriere().getIdcorriere());
                 preparedStatement.setObject(7, spedizione.getDataSpedizione());
 
                 preparedStatement.executeUpdate();
@@ -114,13 +114,13 @@ public class SpedizioneDAOImp implements SpedizioneDAO {
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
-                    String numeroSpedizione=resultSet.getString("idspedizione");
+                    int numeroSpedizione=resultSet.getInt("idspedizione");
                     double pesoTotale = resultSet.getDouble("peso_totale");
                     LocalDate dataConsegna = resultSet.getObject("data_consegna", LocalDate.class);
                     String statoSpedizione = resultSet.getString("stato_spedizione");
                     String operatoreEmail = resultSet.getString("operatore_email");
                     String mezzoTarga = resultSet.getString("mezzo_targa");
-                    String corriereMatricola = resultSet.getString("corriere_matricola");
+                    int corriereMatricola = resultSet.getInt("corriere_matricola");
 
                     // Utilizza altri DAO per ottenere gli oggetti Operatore, Mezzo, Corriere, Ordini se necessario
                     OperatoreDAO operatoreDAO = new OperatoreDAOImp();
@@ -130,7 +130,7 @@ public class SpedizioneDAOImp implements SpedizioneDAO {
                     Mezzo mezzo = mezzoDAO.getByTarga(mezzoTarga);
 
                     CorriereDAO corriereDAO = new CorriereDAOImp();
-                    Corriere corriere = corriereDAO.getByMatricola(corriereMatricola);
+                    Corriere corriere = corriereDAO.getById(corriereMatricola);
 
                     List<Ordine> ordini = new ArrayList<>(); // Implementa la logica per recuperare gli ordini
 
@@ -163,28 +163,25 @@ public class SpedizioneDAOImp implements SpedizioneDAO {
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
-                    String numeroSpedizione=resultSet.getString("idspedizione");
+                    int numeroSpedizione=resultSet.getInt("idspedizione");
                     LocalDate dataSpedizione = resultSet.getObject("data_spedizione", LocalDate.class);
-                    double pesoTotale = resultSet.getDouble("peso_totale");
+                    double pesoTotale = resultSet.getDouble("peso_totale_spedizione");
                     LocalDate dataConsegna = resultSet.getObject("data_consegna", LocalDate.class);
                     String statoSpedizione = resultSet.getString("stato_spedizione");
-                    String operatoreEmail = resultSet.getString("operatore_email");
-                    String mezzoTarga = resultSet.getString("mezzo_targa");
-                    String corriereMatricola = resultSet.getString("corriere_matricola");
+                    String mezzoTarga = resultSet.getString("targa_mezzo");
+                    int corriereMatricola = resultSet.getInt("idcorriere");
 
-                    // Utilizza altri DAO per ottenere gli oggetti Operatore, Mezzo, Corriere, Ordini se necessario
-                    OperatoreDAO operatoreDAO = new OperatoreDAOImp();
-                    Operatore operatore = operatoreDAO.getByEmail(operatoreEmail);
+                    // Utilizza altri DAO per ottenere gli oggetti Mezzo, Corriere, Ordini se necessario
 
                     MezzoDAO mezzoDAO = new MezzoDAOImp();
                     Mezzo mezzo = mezzoDAO.getByTarga(mezzoTarga);
 
                     CorriereDAO corriereDAO = new CorriereDAOImp();
-                    Corriere corriere = corriereDAO.getByMatricola(corriereMatricola);
+                    Corriere corriere = corriereDAO.getById(corriereMatricola);
 
                     List<Ordine> ordini = new ArrayList<>(); // Implementa la logica per recuperare gli ordini
 
-                    Spedizione spedizione = new Spedizione(numeroSpedizione,dataSpedizione, pesoTotale, dataConsegna, statoSpedizione, operatore, mezzo, corriere, ordini);
+                    Spedizione spedizione = new Spedizione(numeroSpedizione,dataSpedizione, pesoTotale, dataConsegna, statoSpedizione, mezzo, corriere, ordini);
                     spedizioni.add(spedizione);
                 }
             } catch (SQLException e) {
@@ -198,6 +195,50 @@ public class SpedizioneDAOImp implements SpedizioneDAO {
             throw new MyException("Errore durante la connessione al database");
         }
         return spedizioni;
+    }
+
+    @Override
+    public Spedizione getById(int numeroSpedizione) throws MyException {
+        String sql = "SELECT * FROM spedizione WHERE idspedizione = ?";
+        try {
+            Connection connection = Postgres.getConnection();
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1, numeroSpedizione);
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+                if  (resultSet.next()) {
+                    LocalDate dataSpedizione = resultSet.getObject("data_spedizione", LocalDate.class);
+                    double pesoTotale = resultSet.getDouble("peso_totale_spedizione");
+                    LocalDate dataConsegna = resultSet.getObject("data_consegna", LocalDate.class);
+                    String statoSpedizione = resultSet.getString("stato_spedizione");
+                    String mezzoTarga = resultSet.getString("targa_mezzo");
+                    int corriereMatricola = resultSet.getInt("idcorriere");
+
+                    // Utilizza altri DAO per ottenere gli oggetti Mezzo, Corriere, Ordini se necessario
+
+                    MezzoDAO mezzoDAO = new MezzoDAOImp();
+                    Mezzo mezzo = mezzoDAO.getByTarga(mezzoTarga);
+
+                    CorriereDAO corriereDAO = new CorriereDAOImp();
+                    Corriere corriere = corriereDAO.getById(corriereMatricola);
+
+                    List<Ordine> ordini = new ArrayList<>(); // Implementa la logica per recuperare gli ordini
+
+                    return new Spedizione(numeroSpedizione,dataSpedizione, pesoTotale, dataConsegna, statoSpedizione, mezzo, corriere, ordini);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                throw new MyException("Errore durante la lettura delle spedizioni");
+            } finally {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new MyException("Errore durante la connessione al database");
+        }
+
+        return null;
     }
 }
 

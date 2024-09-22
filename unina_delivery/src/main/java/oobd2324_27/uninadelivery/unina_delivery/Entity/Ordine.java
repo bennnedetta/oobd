@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ordine {
+    private int numero;
     private LocalDate data;
     private double costoTotale;
     private double pesoTotale;
@@ -14,12 +15,30 @@ public class Ordine {
     private List<Prodotto> prodotti= new ArrayList<>();
     private Cliente cliente;
 
-    public Ordine(LocalDate data, double costoTotale, double pesoTotale, List<Prodotto> prodotti, Cliente cliente)throws MyException{
+    public Ordine(int numero, LocalDate data, double costoTotale, double pesoTotale, List<Prodotto> prodotti, Cliente cliente)throws MyException{
         setData(data);
         setCostoTotale(costoTotale);
         setPesoTotale(pesoTotale);
         setProdotti(prodotti);
         setCliente(cliente);
+        setNumero(numero);
+    }
+    public Ordine(int numero, LocalDate data, double costoTotale, double pesoTotale, List<Prodotto> prodotti, Cliente cliente,Spedizione spedizione)throws MyException{
+        setData(data);
+        setCostoTotale(costoTotale);
+        setPesoTotale(pesoTotale);
+        setProdotti(prodotti);
+        setCliente(cliente);
+        setNumero(numero);
+        setSpedizione(spedizione);
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 
     public LocalDate getData() {
@@ -80,5 +99,18 @@ public class Ordine {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    @Override
+    public String toString() {
+        return "Ordine{" +
+                "numero=" + numero +
+                ", data=" + data +
+                ", costoTotale=" + costoTotale +
+                ", pesoTotale=" + pesoTotale +
+                ", spedizione=" + spedizione +
+                ", prodotti=" + prodotti +
+                ", cliente=" + cliente +
+                '}';
     }
 }

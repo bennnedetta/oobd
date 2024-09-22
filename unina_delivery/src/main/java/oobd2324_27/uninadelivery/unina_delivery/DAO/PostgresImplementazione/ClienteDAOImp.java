@@ -94,13 +94,13 @@ public class ClienteDAOImp implements ClienteDAO {
                 preparedStatement.setString(1,email);
 
                 ResultSet resultSet= preparedStatement.executeQuery();
-                while(resultSet.next()){
-                    String mail=resultSet.getString("email");
+                if (resultSet.next()){
+
                     String nome=resultSet.getString("nome");
                     String cognome=resultSet.getString("cognome");
                     String via=resultSet.getString("via");
                     String recapitoTelefonico=resultSet.getString("numero_telefono");
-                    Cliente cliente=new Cliente(nome,cognome,via,email,recapitoTelefonico);
+                    return new Cliente(nome,cognome,via,email,recapitoTelefonico);
                 }
             }catch(SQLException | MyException e){
                 e.printStackTrace();

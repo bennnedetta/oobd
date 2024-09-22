@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Spedizione {
-    private String numeroSpedizione;
+    private int numeroSpedizione;
     private LocalDate dataSpedizione;
     private double pesoTotale;
     private LocalDate dataConsegna;
@@ -17,13 +17,25 @@ public class Spedizione {
     private Corriere corriere;
     private List<Ordine> ordini= new ArrayList<>();
 
-    public Spedizione(String numeroSpedizione,LocalDate dataSpedizione, double pesoTotale, LocalDate dataConsegna, String statoSpedizione, Operatore operatore, Mezzo mezzo, Corriere corriere, List<Ordine> ordini) throws MyException {
+    public Spedizione(int numeroSpedizione,LocalDate dataSpedizione, double pesoTotale, LocalDate dataConsegna, String statoSpedizione, Operatore operatore, Mezzo mezzo, Corriere corriere, List<Ordine> ordini) throws MyException {
         setNumeroSpedizione(numeroSpedizione);
         setDataSpedizione(dataSpedizione);
+        setStatoSpedizione(statoSpedizione);
         setPesoTotale(pesoTotale);
         setDataConsegna(dataConsegna);
         setDataSpedizione(dataSpedizione);
         setOperatore(operatore);
+        setMezzo(mezzo);
+        setCorriere(corriere);
+        setOrdini(ordini);
+    }
+    public Spedizione(int numeroSpedizione,LocalDate dataSpedizione, double pesoTotale, LocalDate dataConsegna, String statoSpedizione, Mezzo mezzo, Corriere corriere, List<Ordine> ordini) throws MyException {
+        setNumeroSpedizione(numeroSpedizione);
+        setStatoSpedizione(statoSpedizione);
+        setDataSpedizione(dataSpedizione);
+        setPesoTotale(pesoTotale);
+        setDataConsegna(dataConsegna);
+        setDataSpedizione(dataSpedizione);
         setMezzo(mezzo);
         setCorriere(corriere);
         setOrdini(ordini);
@@ -48,11 +60,11 @@ public class Spedizione {
         this.pesoTotale = pesoTotale;
     }
 
-    public String getNumeroSpedizione() {
+    public int getNumeroSpedizione() {
         return numeroSpedizione;
     }
 
-    public void setNumeroSpedizione(String numeroSpedizione) {
+    public void setNumeroSpedizione(int numeroSpedizione) {
         this.numeroSpedizione = numeroSpedizione;
     }
 
