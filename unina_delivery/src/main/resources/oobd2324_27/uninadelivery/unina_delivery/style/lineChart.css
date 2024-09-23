@@ -1,35 +1,35 @@
 
 .default-color0.chart-series-line {
-    -fx-stroke: #FFBE0B;
+    -fx-stroke: #0077b6;
 }
 .default-color1.chart-series-line {
-    -fx-stroke: #FB5607;
+    -fx-stroke: #00b4d8;
 }
 .default-color2.chart-series-line {
-    -fx-stroke: #FF006E;
+    -fx-stroke: #90e0ef;
 }
 .default-color3.chart-series-line {
-    -fx-stroke: #8338EC;
+    -fx-stroke: #caf0f8;
 }
 .default-color4.chart-series-line {
-    -fx-stroke: #3A86FF;
+    -fx-stroke: #52b69a;
 }
 .default-color0.chart-line-symbol {
-    -fx-background-color: #FFBE0B,#FFFFFF;
+    -fx-background-color: #0077b6,#FFFFFF;
 }
 .default-color1.chart-line-symbol {
-    -fx-background-color: #FB5607,#FFFFFF;
+    -fx-background-color: #00b4d8,#FFFFFF;
 }
 .default-color2.chart-line-symbol {
-    -fx-background-color: #FF006E,#FFFFFF;
+    -fx-background-color: #bbd0ff,#FFFFFF;
 }
 .default-color3.chart-line-symbol {
-    -fx-background-color: #8338EC,#FFFFFF;
+    -fx-background-color: #b8c0ff,#FFFFFF;
 }
 .default-color4.chart-line-symbol {
-    -fx-background-color: #3A86FF,#FFFFFF;
+    -fx-background-color: #c8b6ff,#FFFFFF;
 }
 .chart-axis.tick-label{
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: #fff;
 }
 

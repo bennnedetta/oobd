@@ -1,18 +1,18 @@
 .default-color0.chart-pie {
-    -fx-pie-color: #FFBE0B;
+    -fx-pie-color: #0077b6;
 }
 .default-color1.chart-pie {
-    -fx-pie-color: #FB5607;
+    -fx-pie-color: #00b4d8;
 }
 .default-color2.chart-pie {
-    -fx-pie-color: #FF006E;
+    -fx-pie-color: #bbd0ff;
 }
 .default-color3.chart-pie {
-    -fx-pie-color: #8338EC;
+    -fx-pie-color: #b8c0ff;
 }
 .default-color4.chart-pie {
-    -fx-pie-color: #3A86FF;
+    -fx-pie-color: #c8b6ff;
 }
 .chart-pie-label{
-    -fx-fill: #ffffff;
+    -fx-fill: #fff;
 }

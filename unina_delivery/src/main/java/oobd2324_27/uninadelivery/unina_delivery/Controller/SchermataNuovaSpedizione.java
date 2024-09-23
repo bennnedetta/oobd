@@ -68,7 +68,15 @@ public class SchermataNuovaSpedizione implements Initializable {
 
     @FXML
     void aggiungiSpedizione(ActionEvent event) {
-
+        try {
+            Stage stage = (Stage) aggiungiButton.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/schermataSpedizioni.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

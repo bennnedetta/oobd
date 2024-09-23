@@ -2,10 +2,10 @@
     -fx-background-color: #fff;
 }
 .choice-box .menu-item:focused{
-    -fx-background-color: #FF92C2;
+    -fx-background-color: #669bbc;
 }
 .choice-box .menu-item > .label{
-    -fx-text-fill: #DA085A;
+    -fx-text-fill: #003049;
 }
 .choice-box .menu-item:focused > .label{
     -fx-text-fill: #fff;

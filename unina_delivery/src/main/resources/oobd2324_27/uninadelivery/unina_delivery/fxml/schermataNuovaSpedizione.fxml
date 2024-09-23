@@ -32,17 +32,17 @@
                                             <font>
                                                 <Font name="Microsoft Himalaya" size="22.0" />
                                             </font></Button>
-                                        <Button layoutX="23.0" layoutY="216.0" mnemonicParsing="false" onAction="#showOrdini" onMouseClicked="#showOrdini" prefHeight="45.0" prefWidth="191.0" text="Ordini" textFill="#da085a" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="216.0">
+                                        <Button layoutX="23.0" layoutY="216.0" mnemonicParsing="false" onAction="#showOrdini" prefHeight="45.0" prefWidth="191.0" text="Ordini" textFill="#da085a" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="216.0">
                                             <font>
                                                 <Font name="Microsoft Himalaya" size="22.0" />
                                             </font></Button>
-                                        <Button layoutX="23.0" layoutY="237.0" mnemonicParsing="false" onAction="#showSpedizioni" onMouseClicked="#showSpedizioni" prefHeight="45.0" prefWidth="190.0" text="Spedizioni" textFill="#da085a" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="280.0">
+                                        <Button layoutX="23.0" layoutY="237.0" mnemonicParsing="false" onAction="#showSpedizioni" prefHeight="45.0" prefWidth="190.0" text="Spedizioni" textFill="#da085a" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="280.0">
                                             <font>
                                                 <Font name="Microsoft Himalaya" size="22.0" />
                                             </font></Button>
                                         <ImageView fitHeight="74.0" fitWidth="120.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../images/logo.png" />
+                                                <Image url="@../images/deliveryLogo.png" />
                                             </image>
                                         </ImageView>
                                     </children>

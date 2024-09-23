@@ -23,7 +23,7 @@
                <left>
                   <AnchorPane prefHeight="700.0" prefWidth="180.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane layoutY="-2.6666666666666665" prefHeight="523.0" prefWidth="180.0" style="-fx-background-color: #ffffff;" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane layoutY="-2.6666666666666665" prefHeight="523.0" prefWidth="180.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <Label alignment="CENTER" layoutX="-2.0" layoutY="84.0" prefHeight="30.0" prefWidth="185.0" text="UninaDelivery" textFill="#da085a">
                                  <font>
@@ -44,7 +44,7 @@
                                  </font></Button>
                               <ImageView fitHeight="74.0" fitWidth="120.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/logo.png" />
+                                    <Image url="@../images/deliveryLogo.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -59,7 +59,7 @@
                            <children>
                               <AnchorPane layoutX="14.0" layoutY="183.0" prefHeight="329.0" prefWidth="419.0" style="-fx-background-color: #ffffff;">
                                  <children>
-                                    <LineChart fx:id="graficoSpedizioni" alternativeRowFillVisible="false" layoutX="-95.0" layoutY="-51.0" legendVisible="false" prefHeight="349.3333333333333" prefWidth="419.3333333333333" style="-fx-background-color: #FF92C2;" stylesheets="@../style/lineChart.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <LineChart fx:id="graficoSpedizioni" alternativeRowFillVisible="false" layoutX="-95.0" layoutY="-51.0" legendVisible="false" prefHeight="349.3333333333333" prefWidth="419.3333333333333" style="-fx-background-color: #669bbc;" stylesheets="@../style/lineChart.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <xAxis>
                                         <CategoryAxis gapStartAndEnd="false" side="BOTTOM" fx:id="xAxis" />
                                       </xAxis>
@@ -67,7 +67,7 @@
                                         <NumberAxis fx:id="yAxis" side="LEFT" tickLabelFill="WHITE" />
                                       </yAxis>
                                     </LineChart>
-                                    <Text fill="#b5044b" layoutX="147.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Report delle spedizioni">
+                                    <Text fill="WHITE" layoutX="147.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Report delle spedizioni">
                                        <font>
                                           <Font name="Microsoft Himalaya" size="20.0" />
                                        </font>
