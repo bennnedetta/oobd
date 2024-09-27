@@ -1,7 +1,5 @@
 package oobd2324_27.uninadelivery.unina_delivery.Controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import oobd2324_27.uninadelivery.unina_delivery.DAO.PostgresImplementazione.SpedizioneDAOImp;
-import oobd2324_27.uninadelivery.unina_delivery.Entity.Spedizione;
+
 import oobd2324_27.uninadelivery.unina_delivery.Main;
 
 
@@ -91,7 +89,7 @@ public class SchermataPrincipale implements Initializable {
         HashMap<String, Integer> hashMapSpedizioni = new SpedizioneDAOImp().getNumeroSpedizioniPerData(datainizio,datafine);
         graficoSpecifico.getData().clear();
         for(Map.Entry<String, Integer> data : hashMapSpedizioni.entrySet()){
-            String key = "Periodo: " + data.getKey() + " -> Spedizioni: " + data.getValue();
+            String key = "Periodo: " + data.getKey() + "\n Spedizioni: " + data.getValue();
             graficoSpecifico.getData().add(new PieChart.Data(key, data.getValue()));
         }
     }

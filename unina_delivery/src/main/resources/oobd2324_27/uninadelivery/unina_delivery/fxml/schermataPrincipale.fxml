@@ -80,7 +80,7 @@
                               <DatePicker fx:id="dataFine" layoutX="258.0" layoutY="48.0" />
                               <AnchorPane layoutX="493.0" layoutY="184.0" prefHeight="327.0" prefWidth="380.0">
                                  <children>
-                                    <PieChart fx:id="graficoSpecifico" labelLineLength="30.0" layoutX="50.0" layoutY="33.333333333333336" legendSide="RIGHT" legendVisible="false" prefHeight="327.3333333333333" prefWidth="330.0" stylesheets="@../style/pieChart.css" title="Report delle Spedizioni Specifico" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <PieChart fx:id="graficoSpecifico" labelLineLength="15.0" layoutX="50.0" layoutY="33.333333333333336" legendSide="RIGHT" legendVisible="false" prefHeight="327.3333333333333" prefWidth="330.0" stylesheets="@../style/pieChart.css" title="Report delle Spedizioni Specifico" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                               <Label fx:id="ordiniSpeditiLabel" layoutX="522.0" layoutY="41.0" text="Ordini in media spediti:" textFill="WHITE">

@@ -55,8 +55,6 @@ public class SchermataSpedizioni implements Initializable {
     @FXML
     private Button creaNuovaSpedizioneButton;
 
-    @FXML
-    private Button ricaricaTabellaButton;
 
     @FXML
     void logout(MouseEvent event) {
@@ -126,7 +124,7 @@ public class SchermataSpedizioni implements Initializable {
         try {
             spedizioni.addAll(spedizioneDAO.getAllSpedizioni());
             tabellaSpedizioni.setItems(spedizioni);
-        } catch (MyException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

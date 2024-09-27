@@ -1,6 +1,5 @@
 package oobd2324_27.uninadelivery.unina_delivery.Controller;
 
-import javafx.beans.Observable;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -58,9 +57,6 @@ public class SchermataOrdini implements Initializable {
 
     @FXML
     private TextField filtroUtente;
-
-    @FXML
-    private Label filtroUtenteLabel;
 
     @FXML
     void logout(MouseEvent event) {

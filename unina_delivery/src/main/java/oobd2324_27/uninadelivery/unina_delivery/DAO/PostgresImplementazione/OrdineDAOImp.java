@@ -22,58 +22,7 @@ import java.util.List;
 public class OrdineDAOImp implements OrdineDAO {
 
     @Override
-    public void createOrdine(Ordine ordine) throws MyException {
-        String sql = "INSERT INTO ordine (data, costototale, pesototale, email_cliente,idspedizione) " +
-                     "VALUES (?, ?, ?, ?,?)";
-        try {
-            Integer idspedizione = new SpedizioneDAOImp().getId(ordine.getSpedizione());
-            Connection connection = Postgres.getConnection();
-            try {
-                PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setObject(1, ordine.getData());
-                preparedStatement.setDouble(2, ordine.getCostoTotale());
-                preparedStatement.setDouble(3, ordine.getPesoTotale());
-                preparedStatement.setString(4, ordine.getCliente().getEmail());
-
-                preparedStatement.setInt(5, idspedizione);
-
-                preparedStatement.executeUpdate();
-            } catch (SQLException e) {
-                e.printStackTrace();
-                throw new MyException("Errore durante la creazione dell'ordine");
-            } finally {
-                connection.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new MyException("Errore durante la connessione al database");
-        }
-    }
-
-    @Override
-    public void deleteOrdine(LocalDate dataOrdine) throws MyException {
-        String sql = "DELETE FROM ordine WHERE data_ordine = ?";
-        try {
-            Connection connection = Postgres.getConnection();
-            try {
-                PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setObject(1, dataOrdine);
-
-                preparedStatement.executeUpdate();
-            } catch (SQLException e) {
-                e.printStackTrace();
-                throw new MyException("Errore durante l'eliminazione dell'ordine");
-            } finally {
-                connection.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new MyException("Errore durante la connessione al database");
-        }
-    }
-
-    @Override
-    public void updateOrdine(Ordine ordine) throws MyException {
+    public void updateOrdine(Ordine ordine) {
         String sql = "UPDATE ordine SET idspedizione=? WHERE idordine=?";
         try {
             Integer spedizione = new SpedizioneDAOImp().getId(ordine.getSpedizione());
@@ -84,15 +33,13 @@ public class OrdineDAOImp implements OrdineDAO {
                 preparedStatement.setInt(2,ordine.getNumero());
 
                 preparedStatement.executeUpdate();
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
-                throw new MyException("Errore durante l'aggiornamento dell'ordine");
             } finally {
                 connection.close();
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            throw new MyException("Errore durante la connessione al database");
         }
     }
 
@@ -133,7 +80,7 @@ public class OrdineDAOImp implements OrdineDAO {
     }
 
     @Override
-    public List<Ordine> getAllOrdiniDaSpedire() throws MyException {
+    public List<Ordine> getAllOrdiniDaSpedire() {
         String sql = "SELECT * FROM ordine WHERE idspedizione IS NULL ";
         List<Ordine> ordini = new ArrayList<>();
         try {
@@ -153,7 +100,6 @@ public class OrdineDAOImp implements OrdineDAO {
                     SpedizioneDAO spedizioneDAO = new SpedizioneDAOImp();
                     Spedizione spedizione= spedizioneDAO.getById(numeroSpedizione);
 
-                    // Utilizza un DAO per ottenere l'oggetto Cliente se necessario
                     ClienteDAO clienteDAO = new ClienteDAOImp();
                     Cliente cliente = clienteDAO.getByEmail(clienteEmail);
 
@@ -162,15 +108,13 @@ public class OrdineDAOImp implements OrdineDAO {
                     Ordine ordine = new Ordine(numero,dataOrdine, costoTotale, pesoTotale, prodotti, cliente,spedizione);
                     ordini.add(ordine);
                 }
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
-                throw new MyException("Errore durante la lettura degli ordini");
             } finally {
                 connection.close();
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            throw new MyException("Errore durante la connessione al database");
         }
         return ordini;
     }
@@ -196,7 +140,6 @@ public class OrdineDAOImp implements OrdineDAO {
                     SpedizioneDAO spedizioneDAO = new SpedizioneDAOImp();
                     Spedizione spedizione= spedizioneDAO.getById(numeroSpedizione);
 
-                    // Utilizza un DAO per ottenere l'oggetto Cliente se necessario
                     ClienteDAO clienteDAO = new ClienteDAOImp();
                     Cliente cliente = clienteDAO.getByEmail(clienteEmail);
 
@@ -218,7 +161,7 @@ public class OrdineDAOImp implements OrdineDAO {
     }
 
     @Override
-    public List<Ordine> getByData(LocalDate dataInizio, LocalDate dataFine) throws MyException {
+    public List<Ordine> getByData(LocalDate dataInizio, LocalDate dataFine) {
         String sql = "SELECT * FROM ordine WHERE data BETWEEN ? AND ?";
         List<Ordine> ordini = new ArrayList<>();
         try {
@@ -250,7 +193,7 @@ public class OrdineDAOImp implements OrdineDAO {
                     Ordine ordine = new Ordine(numero,dataOrdine, costoTotale, pesoTotale,prodotti,cliente,spedizione);
                     ordini.add(ordine);
                 }
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }finally {
                 connection.close();
@@ -262,7 +205,7 @@ public class OrdineDAOImp implements OrdineDAO {
     }
 
     @Override
-    public List<Ordine> getByCliente(LocalDate dataInizio, LocalDate dataFine,String clienteEmail) throws MyException {
+    public List<Ordine> getByCliente(LocalDate dataInizio, LocalDate dataFine,String clienteEmail) {
         String sql = "SELECT * FROM ordine WHERE email_cliente=? AND data BETWEEN ? AND ?";
         List<Ordine> ordini = new ArrayList<>();
         try {
@@ -293,7 +236,7 @@ public class OrdineDAOImp implements OrdineDAO {
                     Ordine ordine = new Ordine(numero,dataOrdine, costoTotale, pesoTotale,prodotti,cliente,spedizione);
                     ordini.add(ordine);
                 }
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }finally {
                 connection.close();

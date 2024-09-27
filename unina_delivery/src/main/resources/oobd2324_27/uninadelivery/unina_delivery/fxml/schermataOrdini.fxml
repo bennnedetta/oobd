@@ -88,7 +88,7 @@
                                        </font>
                                     </Button>
                                     <TextField fx:id="filtroUtente" layoutX="693.0" layoutY="36.0" prefHeight="32.0" prefWidth="174.0" />
-                                    <Label fx:id="filtroUtenteLabel" layoutX="584.0" layoutY="38.0" text="Filtra per utente:" />
+                                    <Label layoutX="584.0" layoutY="38.0" text="Filtra per utente:" />
                                  </children>
                               </AnchorPane>
                            </children></AnchorPane>

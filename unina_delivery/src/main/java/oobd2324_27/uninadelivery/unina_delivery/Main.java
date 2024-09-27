@@ -23,17 +23,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
-
-        /*try {
-            OperatoreDAO operatoreDAO= new OperatoreDAOImp();
-            //Operatore operatore = operatoreDAO.getByEmail("lala");
-            Operatore operatore=new Operatore("massi","gay","comete","123");
-            operatoreDAO.create(operatore);
-            operatoreDAO.delete(operatore);
-            System.out.println(operatore.getNome());
-        }catch (Exception eccezione){
-          System.out.println(eccezione.getMessage());
-        }*/
     }
 }
 

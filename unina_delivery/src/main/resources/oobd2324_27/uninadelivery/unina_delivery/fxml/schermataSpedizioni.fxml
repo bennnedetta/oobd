@@ -91,7 +91,6 @@
                                     <Font size="36.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="ricaricaTabellaButton" layoutX="802.0" layoutY="482.0" mnemonicParsing="false" onAction="#mostraNuovaTabella" stylesheets="@../style/button.css" text="Ricarica" />
                            </children>
                            <stylesheets>
                               <URL value="@../style/tableview.css" />

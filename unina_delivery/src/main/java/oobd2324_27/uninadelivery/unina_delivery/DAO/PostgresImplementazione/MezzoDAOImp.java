@@ -13,32 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MezzoDAOImp implements MezzoDAO {
-    @Override
-    public Mezzo getByDisponibilita(boolean disponibile) {
-        String sql = "SELECT * FROM mezzo WHERE disponibile=?";
-        try {
-            Connection connection = Postgres.getConnection();
-            try {
-                PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setBoolean(1, disponibile);
-
-                ResultSet resultSet = preparedStatement.executeQuery();
-                while (resultSet.next()) {
-                    String targa = resultSet.getString("targa");
-                    Double pesoSupportato = resultSet.getDouble("peso_supportato");
-                    Boolean disponibilita = resultSet.getBoolean("disponibilita");
-                    Mezzo mezzo = new Mezzo(targa, pesoSupportato, disponibile);
-                }
-            } catch (SQLException | MyException e) {
-                e.printStackTrace();
-            } finally {
-                connection.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
     @Override
     public Mezzo getByTarga(String targa) {
@@ -65,28 +39,6 @@ public class MezzoDAOImp implements MezzoDAO {
             e.printStackTrace();
         }
         return null;
-    }
-
-    @Override
-    public void update(Mezzo nuovoMezzo, String targa) {
-        String sql = "UPDATE mezzo SET disponibile=? WHERE targa=?";
-        try {
-            Connection connection = Postgres.getConnection();
-            try {
-                PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setBoolean(1, nuovoMezzo.isDisponibile());
-                preparedStatement.setString(2, nuovoMezzo.getTarga());
-
-                preparedStatement.executeUpdate();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } finally {
-                connection.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
     }
 
     @Override
