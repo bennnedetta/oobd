@@ -158,8 +158,8 @@ public class CorriereDAOImp implements CorriereDAO {
     }
 
     @Override
-    public List<Corriere> getAvailableCorrieri() throws MyException {
-        String sql = "SELECT * FROM corriere WHERE disponibile = TRUE";
+    public List<Corriere> getAvailableCorrieri()  {
+        String sql = "SELECT * FROM corriere WHERE disponibilita = TRUE";
         List<Corriere> corrieri = new ArrayList<>();
         try {
             Connection connection = Postgres.getConnection();
@@ -170,22 +170,20 @@ public class CorriereDAOImp implements CorriereDAO {
                 while (resultSet.next()) {
                     String nome = resultSet.getString("nome");
                     String cognome = resultSet.getString("cognome");
-                    String recapitoTelefonico = resultSet.getString("recapitoTelefonico");
-                    boolean disponibile = resultSet.getBoolean("disponibile");
+                    String recapitoTelefonico = resultSet.getString("numero_telefono");
                     int matricola = resultSet.getInt("idcorriere");
 
-                    Corriere corriere = new Corriere(nome, cognome, recapitoTelefonico, disponibile, matricola);
+                    Corriere corriere = new Corriere(nome, cognome, recapitoTelefonico,true, matricola);
                     corrieri.add(corriere);
                 }
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
-                throw new MyException("Errore durante la lettura dei corrieri disponibili");
+
             } finally {
                 connection.close();
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new MyException("Errore durante la connessione al database");
         }
         return corrieri;
     }

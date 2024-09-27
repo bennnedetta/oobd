@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
@@ -10,7 +11,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oobd2324_27.uninadelivery.unina_delivery.Controller.SchermataNuovaSpedizione">
@@ -20,34 +20,47 @@
                 <BorderPane layoutX="262.0" layoutY="176.0" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #f5f5dc;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <left>
                         <AnchorPane prefHeight="700.0" prefWidth="180.0" BorderPane.alignment="CENTER">
-                            <children>
-                                <AnchorPane layoutY="-2.6666666666666665" prefHeight="523.0" prefWidth="180.0" style="-fx-background-color: #ffffff;" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                    <children>
-                                        <Label alignment="CENTER" layoutX="-2.0" layoutY="84.0" prefHeight="30.0" prefWidth="185.0" text="UninaDelivery" textFill="#da085a">
-                                            <font>
-                                                <Font name="Microsoft Himalaya" size="24.0" />
-                                            </font>
-                                        </Label>
-                                        <Button layoutX="6.0" layoutY="145.0" mnemonicParsing="false" onAction="#showHome" prefHeight="47.0" prefWidth="185.0" text="Home" textFill="#da085a" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="150.0">
-                                            <font>
-                                                <Font name="Microsoft Himalaya" size="22.0" />
-                                            </font></Button>
-                                        <Button layoutX="23.0" layoutY="216.0" mnemonicParsing="false" onAction="#showOrdini" prefHeight="45.0" prefWidth="191.0" text="Ordini" textFill="#da085a" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="216.0">
-                                            <font>
-                                                <Font name="Microsoft Himalaya" size="22.0" />
-                                            </font></Button>
-                                        <Button layoutX="23.0" layoutY="237.0" mnemonicParsing="false" onAction="#showSpedizioni" prefHeight="45.0" prefWidth="190.0" text="Spedizioni" textFill="#da085a" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="280.0">
-                                            <font>
-                                                <Font name="Microsoft Himalaya" size="22.0" />
-                                            </font></Button>
-                                        <ImageView fitHeight="74.0" fitWidth="120.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../images/deliveryLogo.png" />
-                                            </image>
-                                        </ImageView>
-                                    </children>
-                                </AnchorPane>
-                            </children>
+                     <children>
+                        <AnchorPane prefHeight="550.0" prefWidth="183.0" styleClass="sidebar">
+                           <children>
+                              <Label alignment="CENTER" layoutX="-2.0" layoutY="84.0" prefHeight="30.0" prefWidth="185.0" text="UninaDelivery" textFill="#669bbc">
+                                 <font>
+                                    <Font name="Microsoft Himalaya" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="6.0" layoutY="145.0" mnemonicParsing="false" onAction="#showHome" prefHeight="47.0" prefWidth="185.0" text="Home" textFill="#669bbc" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="150.0">
+                                 <font>
+                                    <Font name="Microsoft Himalaya" size="22.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="23.0" layoutY="216.0" mnemonicParsing="false" onAction="#showOrdini" prefHeight="45.0" prefWidth="191.0" text="Ordini" textFill="#669bbc" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="216.0">
+                                 <font>
+                                    <Font name="Microsoft Himalaya" size="22.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="23.0" layoutY="237.0" mnemonicParsing="false" onAction="#showSpedizioni" prefHeight="45.0" prefWidth="190.0" text="Spedizioni" textFill="#669bbc" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="280.0">
+                                 <font>
+                                    <Font name="Microsoft Himalaya" size="22.0" />
+                                 </font>
+                              </Button>
+                              <ImageView fitHeight="74.0" fitWidth="120.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/deliveryLogo.png" />
+                                 </image>
+                              </ImageView>
+                              <AnchorPane layoutY="403.3333333333333" prefHeight="147.0" prefWidth="183.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="403.0">
+                                 <children>
+                                    <ImageView fitHeight="29.0" fitWidth="31.0" layoutX="77.0" layoutY="59.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/undo-empty.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="64.0" layoutY="95.0" text="Logout" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
                         </AnchorPane>
                     </left>
                     <center>
@@ -55,30 +68,26 @@
                             <children>
                                 <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="520.0" prefWidth="920.0" styleClass="home" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <ChoiceBox fx:id="mezziDisponibili" layoutX="176.0" layoutY="14.0" onMouseClicked="#showMezziDisponibili" prefHeight="43.0" prefWidth="281.0" />
-                              <ChoiceBox fx:id="corrieriDisponibili" layoutX="177.0" layoutY="114.0" onMouseClicked="#showCorrieriDisponibili" prefHeight="43.0" prefWidth="280.0" />
-                              <TableView fx:id="tabellaOrdini" layoutX="83.33333333333333" layoutY="243.0" prefHeight="217.0" prefWidth="820.0" styleClass="tableview" stylesheets="@../style/tableview.css" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+                              <ChoiceBox fx:id="mezziDisponibili" layoutX="176.0" layoutY="14.0" prefHeight="43.0" prefWidth="281.0" styleClass="combo-box" stylesheets="@../style/choicebox.css" />
+                              <ChoiceBox fx:id="corrieriDisponibili" layoutX="177.0" layoutY="81.0" prefHeight="43.0" prefWidth="280.0" styleClass="combo-box" stylesheets="@../style/choicebox.css" />
+                              <TableView fx:id="tabellaOrdini" layoutX="24.0" layoutY="267.0" prefHeight="217.0" prefWidth="678.0" styleClass="tableview" stylesheets="@../style/tableview.css" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="215.33333333333337">
                                  <columns>
                                     <TableColumn fx:id="numeroOrdineCol" prefWidth="136.0" text="Numero Ordine" />
                                     <TableColumn fx:id="dataCol" prefWidth="136.0" text="Data" />
                                     <TableColumn fx:id="costoTotaleCol" prefWidth="136.0" text="Costo Totale" />
                                     <TableColumn fx:id="pesoTotaleCol" prefWidth="136.0" text="Peso Totale" />
                                     <TableColumn fx:id="emailClienteCol" prefWidth="136.0" text="Email Cliente" />
-                                    <TableColumn fx:id="numeroSpedzioneCol" prefWidth="136.0" text="Numero Spedizione" />
                                  </columns>
                               </TableView>
                               <Label layoutX="24.0" layoutY="21.0" text="Seleziona un mezzo:" />
-                              <Label layoutX="20.0" layoutY="121.0" text="Seleziona un corriere:" />
-                              <Button fx:id="aggiungiButton" layoutX="426.0" layoutY="485.0" mnemonicParsing="false" onAction="#aggiungiSpedizione" stylesheets="@../style/button.css" text="Aggiungi" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="178.0" layoutX="555.0" layoutY="14.0" stroke="WHITE" strokeType="INSIDE" width="345.0" />
-                              <Label fx:id="numeroSpedizioneLabel" layoutX="792.0" layoutY="35.0" text="Label" />
-                              <Label fx:id="pesoSupportatoLabel" layoutX="792.0" layoutY="70.0" text="Label" />
-                              <Label fx:id="corriereLabel" layoutX="792.0" layoutY="107.0" text="Label" />
-                              <Label fx:id="pesoTotaleLabel" layoutX="792.0" layoutY="143.0" text="Label" />
-                              <Label layoutX="569.0" layoutY="35.0" text="Numero Spedizione:" />
-                              <Label layoutX="567.0" layoutY="70.0" text="Peso supportato dal mezzo:" />
-                              <Label layoutX="567.0" layoutY="107.0" text="Corriere responsable:" />
-                              <Label layoutX="569.0" layoutY="143.0" text="Peso Totale:" />
+                              <Label layoutX="24.0" layoutY="88.0" text="Seleziona un corriere:" />
+                              <Button fx:id="aggiungiButton" layoutX="317.0" layoutY="498.0" mnemonicParsing="false" onAction="#aggiungiOrdine" stylesheets="@../style/button.css" text="Aggiungi" />
+                              <Label fx:id="pesoTotaleLabel" layoutX="104.0" layoutY="160.0" prefHeight="35.0" prefWidth="65.0" text="0.00" />
+                              <Label layoutX="24.0" layoutY="164.0" text="Peso Totale:" />
+                              <Button layoutX="828.0" layoutY="498.0" mnemonicParsing="false" onAction="#salvaSpedizione" prefHeight="36.0" prefWidth="74.0" stylesheets="@../style/button.css" text="Salva" />
+                              <ListView fx:id="recapOrdini" layoutX="546.0" layoutY="14.0" prefHeight="200.0" prefWidth="344.0" />
+                              <Label layoutX="24.0" layoutY="235.0" text="Seleziona gli ordini :" />
+                              <Button layoutX="680.0" layoutY="217.0" mnemonicParsing="false" onAction="#rimuoviOrdine" prefHeight="36.0" prefWidth="75.0" stylesheets="@../style/button.css" text="Rimuovi" />
                            </children></AnchorPane>
                             </children>
                         </AnchorPane>

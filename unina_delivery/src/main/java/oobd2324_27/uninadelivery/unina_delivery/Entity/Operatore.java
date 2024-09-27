@@ -11,8 +11,7 @@ public class Operatore {
     private String email;
     private String password;
     private List<Spedizione> spedizioni=new ArrayList<>();
-
-    //questo è il costruttore viene usato solo quando faccio new.
+    
     public Operatore(String nome, String cognome, String email, String password) throws MyException{
         this.setNome(nome);
         this.setCognome(cognome);

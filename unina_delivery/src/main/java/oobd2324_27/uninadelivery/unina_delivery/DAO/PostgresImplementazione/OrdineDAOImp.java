@@ -23,17 +23,19 @@ public class OrdineDAOImp implements OrdineDAO {
 
     @Override
     public void createOrdine(Ordine ordine) throws MyException {
-        String sql = "INSERT INTO ordine (numero,data_ordine, costo_totale, peso_totale, cliente_email) " +
-                     "VALUES (?,?, ?, ?, ?)";
+        String sql = "INSERT INTO ordine (data, costototale, pesototale, email_cliente,idspedizione) " +
+                     "VALUES (?, ?, ?, ?,?)";
         try {
+            Integer idspedizione = new SpedizioneDAOImp().getId(ordine.getSpedizione());
             Connection connection = Postgres.getConnection();
             try {
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setInt(1, ordine.getNumero());
-                preparedStatement.setObject(2, ordine.getData());
-                preparedStatement.setDouble(3, ordine.getCostoTotale());
-                preparedStatement.setDouble(4, ordine.getPesoTotale());
-                preparedStatement.setString(5, ordine.getCliente().getEmail());
+                preparedStatement.setObject(1, ordine.getData());
+                preparedStatement.setDouble(2, ordine.getCostoTotale());
+                preparedStatement.setDouble(3, ordine.getPesoTotale());
+                preparedStatement.setString(4, ordine.getCliente().getEmail());
+
+                preparedStatement.setInt(5, idspedizione);
 
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {
@@ -72,17 +74,14 @@ public class OrdineDAOImp implements OrdineDAO {
 
     @Override
     public void updateOrdine(Ordine ordine) throws MyException {
-        String sql = "UPDATE ordine SET idordine= ?, costo_totale = ?, peso_totale = ?, cliente_email = ? " +
-                     "WHERE data_ordine = ?";
+        String sql = "UPDATE ordine SET idspedizione=? WHERE idordine=?";
         try {
+            Integer spedizione = new SpedizioneDAOImp().getId(ordine.getSpedizione());
             Connection connection = Postgres.getConnection();
             try {
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setInt(1,ordine.getNumero());
-                preparedStatement.setDouble(2, ordine.getCostoTotale());
-                preparedStatement.setDouble(3, ordine.getPesoTotale());
-                preparedStatement.setString(4, ordine.getCliente().getEmail());
-                preparedStatement.setObject(5, ordine.getData());
+                preparedStatement.setInt(1,spedizione);
+                preparedStatement.setInt(2,ordine.getNumero());
 
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {
@@ -98,21 +97,21 @@ public class OrdineDAOImp implements OrdineDAO {
     }
 
     @Override
-    public Ordine readOrdine(LocalDate dataOrdine) throws MyException {
-        String sql = "SELECT * FROM ordine WHERE data_ordine = ?";
+    public Ordine readOrdine(int idOrdine) {
+        String sql = "SELECT * FROM ordine WHERE idordine = ?";
         Ordine ordine = null;
         try {
             Connection connection = Postgres.getConnection();
             try {
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setObject(1, dataOrdine);
+                preparedStatement.setInt(1, idOrdine);
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
-                    int numero = resultSet.getInt("idordine");
-                    double costoTotale = resultSet.getDouble("costo_totale");
-                    double pesoTotale = resultSet.getDouble("peso_totale");
-                    String clienteEmail = resultSet.getString("cliente_email");
+                    LocalDate data = resultSet.getObject("data", LocalDate.class);
+                    double costoTotale = resultSet.getDouble("costototale");
+                    double pesoTotale = resultSet.getDouble("pesototale");
+                    String clienteEmail = resultSet.getString("email_cliente");
 
                     // Utilizza un DAO per ottenere l'oggetto Cliente se necessario
                     ClienteDAO clienteDAO = new ClienteDAOImp();
@@ -120,27 +119,22 @@ public class OrdineDAOImp implements OrdineDAO {
 
                     List<Prodotto> prodotti = new ArrayList<>(); // Implementa la logica per recuperare i prodotti
 
-                    ordine = new Ordine(numero,dataOrdine, costoTotale, pesoTotale, prodotti, cliente);
+                    ordine = new Ordine(idOrdine,data,costoTotale, pesoTotale, prodotti, cliente);
                 }
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
-                throw new MyException("Errore durante la lettura dell'ordine");
             } finally {
                 connection.close();
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new MyException("Errore durante la connessione al database");
-        }
-        if (ordine == null) {
-            throw new MyException("Ordine non trovato");
         }
         return ordine;
     }
 
     @Override
-    public List<Ordine> getAllOrdini() throws MyException {
-        String sql = "SELECT * FROM ordine";
+    public List<Ordine> getAllOrdiniDaSpedire() throws MyException {
+        String sql = "SELECT * FROM ordine WHERE idspedizione IS NULL ";
         List<Ordine> ordini = new ArrayList<>();
         try {
             Connection connection = Postgres.getConnection();
@@ -177,6 +171,48 @@ public class OrdineDAOImp implements OrdineDAO {
         } catch (SQLException e) {
             e.printStackTrace();
             throw new MyException("Errore durante la connessione al database");
+        }
+        return ordini;
+    }
+
+    @Override
+    public List<Ordine> getAllOrdiniSpediti() {
+        String sql = "SELECT * FROM ordine WHERE idspedizione IS NOT NULL ";
+        List<Ordine> ordini = new ArrayList<>();
+        try {
+            Connection connection = Postgres.getConnection();
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    int numero = resultSet.getInt("idordine");
+                    LocalDate dataOrdine = resultSet.getObject("data", LocalDate.class);
+                    double costoTotale = resultSet.getDouble("costototale");
+                    double pesoTotale = resultSet.getDouble("pesototale");
+                    String clienteEmail = resultSet.getString("email_cliente");
+                    int numeroSpedizione = resultSet.getInt("idspedizione");
+
+                    SpedizioneDAO spedizioneDAO = new SpedizioneDAOImp();
+                    Spedizione spedizione= spedizioneDAO.getById(numeroSpedizione);
+
+                    // Utilizza un DAO per ottenere l'oggetto Cliente se necessario
+                    ClienteDAO clienteDAO = new ClienteDAOImp();
+                    Cliente cliente = clienteDAO.getByEmail(clienteEmail);
+
+                    List<Prodotto> prodotti = new ArrayList<>(); // Implementa la logica per recuperare i prodotti
+
+                    Ordine ordine = new Ordine(numero,dataOrdine, costoTotale, pesoTotale, prodotti, cliente,spedizione);
+                    ordini.add(ordine);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+
+            } finally {
+                connection.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return ordini;
     }

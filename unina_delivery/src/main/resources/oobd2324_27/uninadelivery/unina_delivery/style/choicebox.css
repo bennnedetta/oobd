@@ -1,12 +1,15 @@
-.choice-box .context-menu{
+.combo-box {
     -fx-background-color: #fff;
+    -fx-border-color: #fff;
 }
-.choice-box .menu-item:focused{
+.combo-box > .label {
+    -fx-text-fill: #669bbc;
+}
+.combo-box .list-view{
+    -fx-background-color: #fff;
+    -fx-border-color: #fff;
+}
+.combo-box .list-view .list-cell:selected{
     -fx-background-color: #669bbc;
-}
-.choice-box .menu-item > .label{
-    -fx-text-fill: #003049;
-}
-.choice-box .menu-item:focused > .label{
     -fx-text-fill: #fff;
 }

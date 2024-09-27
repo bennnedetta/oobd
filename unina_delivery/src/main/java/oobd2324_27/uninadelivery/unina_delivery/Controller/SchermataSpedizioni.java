@@ -59,6 +59,20 @@ public class SchermataSpedizioni implements Initializable {
     private Button ricaricaTabellaButton;
 
     @FXML
+    void logout(MouseEvent event) {
+        try {
+            Stage stage = (Stage) creaNuovaSpedizioneButton.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/schermataLogin.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @FXML
     void creaNuovaSpedizione(ActionEvent event) {
         try {
             Stage stage = (Stage) creaNuovaSpedizioneButton.getScene().getWindow();
@@ -103,6 +117,7 @@ public class SchermataSpedizioni implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     private void setTabella(){

@@ -4,11 +4,14 @@ import oobd2324_27.uninadelivery.unina_delivery.CustomException.MyException;
 import oobd2324_27.uninadelivery.unina_delivery.DAO.OperatoreDAO;
 import oobd2324_27.uninadelivery.unina_delivery.Database.Postgres;
 import oobd2324_27.uninadelivery.unina_delivery.Entity.Operatore;
+import oobd2324_27.uninadelivery.unina_delivery.Entity.Spedizione;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OperatoreDAOImp implements OperatoreDAO {
     @Override
@@ -109,5 +112,34 @@ public class OperatoreDAOImp implements OperatoreDAO {
             e.printStackTrace();
         }
         return operatore;
+    }
+
+    @Override
+    public boolean existCredenziali(String email, String password) {
+        String sql="SELECT * FROM operatore WHERE email=? AND password=?";
+        try{
+            Connection connection=Postgres.getConnection();
+            try{
+                PreparedStatement preparedStatement= connection.prepareStatement(sql);
+                preparedStatement.setString(1,email);
+                preparedStatement.setString(2,password);
+
+                ResultSet resultSet=preparedStatement.executeQuery();
+                if (resultSet.next()){
+                    return true;
+                }else{
+                    return false;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            finally {
+                connection.close();
+            }
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+        return false;
     }
 }

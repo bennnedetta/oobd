@@ -63,9 +63,23 @@ public class SchermataOrdini implements Initializable {
     private Label filtroUtenteLabel;
 
     @FXML
+    void logout(MouseEvent event) {
+        try {
+            Stage stage = (Stage) dataInizio.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/schermataLogin.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @FXML
     void caricaNuovaTabella(ActionEvent event) {
-        ObservableList<Ordine> ordini= FXCollections.observableArrayList();
-        OrdineDAO ordineDAO= new OrdineDAOImp();
+        ObservableList<Ordine> ordini = FXCollections.observableArrayList();
+        OrdineDAO ordineDAO = new OrdineDAOImp();
         try{
             if(filtroUtente.getText().trim().isEmpty()){
                 ordini.addAll(ordineDAO.getByData(dataInizio.getValue(),dataFine.getValue()));
@@ -112,7 +126,7 @@ public class SchermataOrdini implements Initializable {
         ObservableList<Ordine> ordini= FXCollections.observableArrayList();
         OrdineDAO ordineDAO= new OrdineDAOImp();
         try{
-            ordini.addAll(ordineDAO.getAllOrdini());
+            ordini.addAll(ordineDAO.getAllOrdiniSpediti());
             tabellaOrdini.setItems(ordini);
         } catch (Exception e) {
             e.printStackTrace();

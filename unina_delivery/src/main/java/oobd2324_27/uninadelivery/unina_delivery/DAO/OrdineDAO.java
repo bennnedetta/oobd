@@ -19,13 +19,17 @@ public interface OrdineDAO {
     // Metodo per aggiornare un ordine nel database
     void updateOrdine(Ordine ordine) throws MyException;
 
-    // Metodo per leggere un ordine dal database utilizzando la data dell'ordine
-    Ordine readOrdine(LocalDate dataOrdine) throws MyException;
+    // Metodo per leggere un ordine dal database utilizzando il suo id
+    Ordine readOrdine(int idOrdine) ;
 
     // Metodo per ottenere una lista di tutti gli ordini nel database
-    List<Ordine> getAllOrdini() throws MyException;
+    List<Ordine> getAllOrdiniDaSpedire() throws MyException;
 
+    List<Ordine> getAllOrdiniSpediti();
+
+    //metodo per ottenere gli ordini filtrati per data
     List<Ordine> getByData(LocalDate dataInizio, LocalDate dataFine) throws MyException;
 
+    //metodo per ottenere gli ordini filtrati per data e utente
     List<Ordine> getByCliente(LocalDate dataInizio, LocalDate dataFine,String clienteEmail) throws MyException;
 }

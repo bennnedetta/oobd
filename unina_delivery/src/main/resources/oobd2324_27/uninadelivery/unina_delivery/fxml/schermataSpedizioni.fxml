@@ -20,34 +20,47 @@
             <BorderPane layoutX="262.0" layoutY="176.0" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #f5f5dc;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                 <left>
                     <AnchorPane prefHeight="700.0" prefWidth="180.0" BorderPane.alignment="CENTER">
-                        <children>
-                            <AnchorPane layoutY="-2.6666666666666665" prefHeight="523.0" prefWidth="180.0" style="-fx-background-color: #ffffff;" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                <children>
-                                    <Label alignment="CENTER" layoutX="-2.0" layoutY="84.0" prefHeight="30.0" prefWidth="185.0" text="UninaDelivery" textFill="#f66008">
-                                        <font>
-                                            <Font name="Microsoft Himalaya" size="24.0" />
-                                        </font>
-                                    </Label>
-                                    <Button layoutX="6.0" layoutY="145.0" mnemonicParsing="false" onAction="#showHome" prefHeight="47.0" prefWidth="185.0" text="Home" textFill="#f66008" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="150.0">
-                                        <font>
-                                            <Font name="Microsoft Himalaya" size="22.0" />
-                                        </font></Button>
-                                    <Button layoutX="23.0" layoutY="216.0" mnemonicParsing="false" onAction="#showOrdini" prefHeight="45.0" prefWidth="191.0" text="Ordini" textFill="#f66008" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="216.0">
-                                        <font>
-                                            <Font name="Microsoft Himalaya" size="22.0" />
-                                        </font></Button>
-                                    <Button layoutX="23.0" layoutY="237.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="190.0" text="Spedizioni" textFill="#f66008" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="280.0">
-                                        <font>
-                                            <Font name="Microsoft Himalaya" size="22.0" />
-                                        </font></Button>
-                                    <ImageView fitHeight="74.0" fitWidth="120.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                                        <image>
-                                            <Image url="@../images/deliveryLogo.png" />
-                                        </image>
+                     <children>
+                        <AnchorPane prefHeight="550.0" prefWidth="183.0" styleClass="sidebar">
+                           <children>
+                              <Label alignment="CENTER" layoutX="-2.0" layoutY="84.0" prefHeight="30.0" prefWidth="185.0" text="UninaDelivery" textFill="#669bbc">
+                                 <font>
+                                    <Font name="Microsoft Himalaya" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="6.0" layoutY="145.0" mnemonicParsing="false" onAction="#showHome" prefHeight="47.0" prefWidth="185.0" text="Home" textFill="#669bbc" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="150.0">
+                                 <font>
+                                    <Font name="Microsoft Himalaya" size="22.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="23.0" layoutY="216.0" mnemonicParsing="false" onAction="#showOrdini" prefHeight="45.0" prefWidth="191.0" text="Ordini" textFill="#669bbc" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="216.0">
+                                 <font>
+                                    <Font name="Microsoft Himalaya" size="22.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="23.0" layoutY="237.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="190.0" text="Spedizioni" textFill="#669bbc" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="280.0">
+                                 <font>
+                                    <Font name="Microsoft Himalaya" size="22.0" />
+                                 </font>
+                              </Button>
+                              <ImageView fitHeight="74.0" fitWidth="120.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/deliveryLogo.png" />
+                                 </image>
+                              </ImageView>
+                              <AnchorPane layoutY="403.3333333333333" prefHeight="147.0" prefWidth="183.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="403.0">
+                                 <children>
+                                    <ImageView fitHeight="29.0" fitWidth="31.0" layoutX="77.0" layoutY="59.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/undo-empty.png" />
+                                       </image>
                                     </ImageView>
-                                </children>
-                            </AnchorPane>
-                        </children>
+                                    <Label layoutX="64.0" layoutY="95.0" text="Logout" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
                     </AnchorPane>
                 </left>
                 <center>
@@ -79,7 +92,6 @@
                                  </font>
                               </Button>
                               <Button fx:id="ricaricaTabellaButton" layoutX="802.0" layoutY="482.0" mnemonicParsing="false" onAction="#mostraNuovaTabella" stylesheets="@../style/button.css" text="Ricarica" />
-                              <AnchorPane layoutX="-67.0" layoutY="220.0" prefHeight="200.0" prefWidth="200.0" />
                            </children>
                            <stylesheets>
                               <URL value="@../style/tableview.css" />

@@ -40,6 +40,15 @@ public class Spedizione {
         setCorriere(corriere);
         setOrdini(ordini);
     }
+    public Spedizione(LocalDate dataSpedizione, double pesoTotale, LocalDate dataConsegna, String statoSpedizione, Mezzo mezzo, Corriere corriere) throws MyException {
+        setDataSpedizione(dataSpedizione);
+        setStatoSpedizione(statoSpedizione);
+        setPesoTotale(pesoTotale);
+        setDataConsegna(dataConsegna);
+        setDataSpedizione(dataSpedizione);
+        setMezzo(mezzo);
+        setCorriere(corriere);
+    }
 
     public LocalDate getDataSpedizione() {
         return dataSpedizione;

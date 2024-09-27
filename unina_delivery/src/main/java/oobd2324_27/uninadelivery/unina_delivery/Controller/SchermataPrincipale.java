@@ -8,25 +8,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.chart.*;
-import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import oobd2324_27.uninadelivery.unina_delivery.Database.Postgres;
+import oobd2324_27.uninadelivery.unina_delivery.DAO.PostgresImplementazione.SpedizioneDAOImp;
+import oobd2324_27.uninadelivery.unina_delivery.Entity.Spedizione;
 import oobd2324_27.uninadelivery.unina_delivery.Main;
 
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ResourceBundle;
-
-import static oobd2324_27.uninadelivery.unina_delivery.Database.Postgres.getConnection;
+import java.util.*;
 
 public class SchermataPrincipale implements Initializable {
     @FXML
@@ -36,19 +30,12 @@ public class SchermataPrincipale implements Initializable {
     private DatePicker dataInizio = new DatePicker();
 
     @FXML
-    private PieChart graficoCorrieri;
-    //controlla
-    private Connection connection;
-
+    private PieChart graficoSpecifico;
 
     @FXML
     private LineChart<String, Integer> graficoSpedizioni;
 
-    @FXML
-    private CategoryAxis xAxis;
-
-    @FXML
-    private NumberAxis yAxis;
+    private XYChart.Series<String,Integer> numeroSpedizioni= new XYChart.Series<>();
 
 
     @FXML
@@ -68,25 +55,48 @@ public class SchermataPrincipale implements Initializable {
     private Label valoreOrdiniSpediti;
 
     @FXML
-    private Label valoreProdottiNellOrdine;
-    @FXML
-    private Connection connexion;
+    private Label valoreOrdinePiuProdotti;
 
+
+    @FXML
+    void logout(MouseEvent event) {
+        try {
+            Stage stage = (Stage) dataInizio.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/schermataLogin.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        dataInizio.setValue(LocalDate.now());
+        dataInizio.setValue(LocalDate.now().minusMonths(1));
         dataFine.setValue(LocalDate.now());
-        //ordiniSpeditiLabel.setVisible(false);
-        //ordineMenoProdottiLabel.setVisible(false);
-        //prodottiNellOrdineLabel.setVisible(false);
-        //valoreOrdiniSpediti.setVisible(false);
-        //valoreOrdineMenoProdotti.setVisible(false);
-        //valoreProdottiNellOrdine.setVisible(false);
+        List<XYChart.Data<String ,Integer>> dataList= new ArrayList<>();
 
-        //xAxis.setTickLabelFill(Color.WHITE);
+        for(int i=1;i<=12;i++){
+            int spedizioniMensili=new SpedizioneDAOImp().contaSpedizioni(dataInizio.getValue().getYear(), i);
+            dataList.add(new XYChart.Data<>(Integer.toString(i),spedizioniMensili));
+        }
+        numeroSpedizioni.getData().addAll(dataList);
+        graficoSpedizioni.getData().add(numeroSpedizioni);
+
         
     }
+    void setChart(LocalDate datainizio,LocalDate datafine){
+        HashMap<String, Integer> hashMapSpedizioni = new SpedizioneDAOImp().getNumeroSpedizioniPerData(datainizio,datafine);
+        graficoSpecifico.getData().clear();
+        for(Map.Entry<String, Integer> data : hashMapSpedizioni.entrySet()){
+            String key = "Periodo: " + data.getKey() + " -> Spedizioni: " + data.getValue();
+            graficoSpecifico.getData().add(new PieChart.Data(key, data.getValue()));
+        }
+    }
+
+
 
 
 
@@ -95,65 +105,19 @@ public class SchermataPrincipale implements Initializable {
         ordiniSpeditiLabel.setVisible(true);
         ordineMenoProdottiLabel.setVisible(true);
         prodottiNellOrdineLabel.setVisible(true);
-        valoreOrdiniSpediti.setText("5");
-        valoreOrdineMenoProdotti.setText("001234");
-        valoreProdottiNellOrdine.setText("1");
+
+
+       setChart(dataInizio.getValue(),dataFine.getValue());
+       Double valore = new SpedizioneDAOImp().getAvg(dataInizio.getValue(),dataFine.getValue());
+       valoreOrdiniSpediti.setText(Double.toString(valore));
+       int min = new SpedizioneDAOImp().getMin(dataInizio.getValue(),dataFine.getValue());
+       valoreOrdineMenoProdotti.setText(Integer.toString(min));
+       int max = new SpedizioneDAOImp().getMax(dataInizio.getValue(),dataFine.getValue());
+        valoreOrdinePiuProdotti.setText(Integer.toString(max));
+
         valoreOrdiniSpediti.setVisible(true);
         valoreOrdineMenoProdotti.setVisible(true);
-        valoreProdottiNellOrdine.setVisible(true);
-
-    //TODO
-    //valorizzazione del grafico a torta
-    ObservableList<PieChart.Data> pieChartData =
-            FXCollections.observableArrayList(
-                    new PieChart.Data("A", 60),
-                    new PieChart.Data("B", 25),
-                    new PieChart.Data("C", 15),
-                    new PieChart.Data("D", 20),
-                    new PieChart.Data("E", 45)
-            );
-
-    graficoCorrieri.setData(pieChartData);
-
-   /* String query="SELECT * FROM spedizioni WHERE data_consegna BETWEEN ? AND ?";
-    XYChart.Series<String, Integer> series = new XYChart.Series<>();
-    try{
-        getConnection();
-
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-    */
-
-
-    //valorizzazione del grafico con le linee
-    xAxis.setTickLabelRotation(45);
-    xAxis.setCategories(FXCollections.observableArrayList(
-            "gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"
-    ));
-    XYChart.Series<String,Integer> series = new XYChart.Series();
-    series.getData().add(new XYChart.Data("gennaio",10));
-    series.getData().add(new XYChart.Data("febbraio",50));
-    series.getData().add(new XYChart.Data("marzo",75));
-    series.getData().add(new XYChart.Data("aprile",10));
-    series.getData().add(new XYChart.Data("maggio",80));
-
-
-    graficoSpedizioni.getData().add(series);
-
-    XYChart.Series<String,Integer> series2 = new XYChart.Series();
-    series2.getData().add(new XYChart.Data("febbraio",90));
-    series2.getData().add(new XYChart.Data("giugno",30));
-    series2.getData().add(new XYChart.Data("dicembre",20));
-
-    graficoSpedizioni.getData().add(series2);
-
-    XYChart.Series<String,Integer> series3 = new XYChart.Series();
-    series3.getData().add(new XYChart.Data("luglio",60));
-    series3.getData().add(new XYChart.Data("agosto",40));
-
-    graficoSpedizioni.getData().add(series3);
-
+        valoreOrdinePiuProdotti.setVisible(true);
     }
 
     @FXML

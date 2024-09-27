@@ -7,4 +7,5 @@ public interface OperatoreDAO {
     void delete(Operatore operatore);
     void update(Operatore nuovoOperatore,String email);
     Operatore getByEmail(String email);
+    boolean existCredenziali(String email, String password);
 }

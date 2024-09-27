@@ -1,0 +1,18 @@
+.anchorpane{
+    -fx-background-color: #fff;
+    -fx-text-fill: #669BBC;
+    -fx-font-family: "Microsoft Himalaya";
+    -fx-font-size: 24px;
+    -fx-background-radius: 50 0 50 30;
+}
+.anchorpane Label{
+    -fx-text-fill: #669BBC;
+    -fx-font-size: 40px;
+    -fx-font-family: "Microsoft Himalaya";
+}
+
+.messaggio{
+    -fx-text-fill: #ff0000;
+    -fx-font-size: 22px;
+    -fx-font-family: "Microsoft Himalaya";
+}
